@@ -5,10 +5,17 @@ import SponserSection from '@/features/general/home/components/SponsorSection';
 
 const HomePage = () => {
   return (
-    <div>
+    <div className="bg-[#0E0E0E] text-white font-sans">
+      {/* Hero Section */}
       <HeroSection />
+
+      {/* Blog */}
       <BlogsSection />
+
+      {/* History */}
       <HistorySection />
+
+      {/* Sponsors */}
       <SponserSection />
     </div>
   );

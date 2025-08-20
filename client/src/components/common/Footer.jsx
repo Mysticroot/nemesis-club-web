@@ -1,6 +1,9 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { FaInstagram, FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
-const Footer = () => {
+export default function Footer() {
   const socials = [
     { Component: FaInstagram, link: 'https://instagram.com' },
     { Component: FaFacebookF, link: 'https://facebook.com' },
@@ -10,34 +13,39 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-black text-gray-300 pt-16 pb-8 overflow-hidden">
-      {/* Background gradient glow */}
-      <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-black to-black opacity-80 pointer-events-none"></div>
+    <footer className="relative bg-[#0E0E0E] text-[#B0B7C3] pt-16 pb-8 overflow-hidden border-t border-[#2A2D34]">
+      {/* Background accent (deep blue → transparent) */}
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(60%_60%_at_50%_0%,rgba(26,115,232,0.15),transparent_60%)]" />
 
       <div className="relative max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Logo & About + Follow Us */}
-          <div>
-            <img src="/images/logo.png" alt="Nemesis Racing" className="h-16 mb-4" />
-            <p className="text-sm leading-relaxed text-gray-400">
+          <div className="space-y-6">
+            <img src="/images/logo.png" alt="Nemesis Racing" className="h-16" />
+            <p className="text-sm leading-relaxed">
               Nemesis Racing is a competitive racing team dedicated to pushing the limits of
               performance, engineering, and teamwork. Passion drives us forward.
             </p>
 
-            {/* Follow Us (moved here) */}
-            <div className="mt-6">
-              <h3 className="text-lg font-semibold text-white mb-3">Follow Us</h3>
-              <div className="flex space-x-4 text-xl">
+            {/* Follow Us */}
+            <div>
+              <h3 className="text-lg font-extrabold text-white tracking-wide">Follow Us</h3>
+              <div className="mt-3 flex flex-wrap gap-3">
                 {socials.map(({ Component, link }, i) => (
-                  <a
+                  <motion.a
                     key={i}
                     href={link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-full bg-white/10 hover:bg-yellow-400 hover:text-black transition transform hover:scale-110"
+                    whileHover={{ scale: 1.08 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="p-2 rounded-full border border-[#2A2D34] bg-[#0E0E0E]/60 
+                               hover:bg-[#0A1F44]/70 hover:border-[#1A73E8] 
+                               transition-colors"
+                    aria-label={`Follow us on ${Component.displayName || 'social'}`}
                   >
-                    <Component />
-                  </a>
+                    <Component className="text-white" />
+                  </motion.a>
                 ))}
               </div>
             </div>
@@ -45,21 +53,21 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4">Contact</h3>
+            <h3 className="text-lg font-extrabold text-white tracking-wide mb-4">Contact</h3>
             <ul className="space-y-3 text-sm">
               <li>
-                <span className="font-medium text-gray-200">Address:</span>
+                <span className="font-semibold text-white">Address:</span>
                 <br />
                 Nemesis Racing HQ, Pune, India
               </li>
               <li>
-                <span className="font-medium text-gray-200">Phone:</span> +91 98765 43210
+                <span className="font-semibold text-white">Phone:</span> +91 98765 43210
               </li>
               <li>
-                <span className="font-medium text-gray-200">Email:</span>{' '}
+                <span className="font-semibold text-white">Email:</span>{' '}
                 <a
                   href="mailto:contact@nemesisracing.com"
-                  className="hover:text-yellow-400 transition"
+                  className="hover:text-white hover:underline underline-offset-4 transition"
                 >
                   contact@nemesisracing.com
                 </a>
@@ -67,61 +75,64 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Quick Links */}
+          {/* Quick Links (use <Link /> for internal navigation) */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
+            <h3 className="text-lg font-extrabold text-white tracking-wide mb-4">Quick Links</h3>
             <ul className="space-y-3 text-sm">
               <li>
-                <a href="/" className="hover:text-yellow-400 transition">
+                <Link to="/" className="hover:text-white transition">
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/about" className="hover:text-yellow-400 transition">
+                <Link to="/about" className="hover:text-white transition">
                   About Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/history" className="hover:text-yellow-400 transition">
+                <Link to="/history" className="hover:text-white transition">
                   History
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/blogs" className="hover:text-yellow-400 transition">
+                <Link to="/blogs" className="hover:text-white transition">
                   Blogs
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/become-sponsor" className="hover:text-yellow-400 transition">
+                <Link to="/become-sponsor" className="hover:text-white transition">
                   Become a Sponsor
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
 
           {/* Map */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4">Find Us</h3>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.986790379563!2d73.85398177465241!3d18.529499068902513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c0883858b873%3A0x1d68fbf2cac75519!2sCOEP%20Technological%20University!5e0!3m2!1sen!2sin!4v1717502913153!5m2!1sen!2sin"
-              width="100%"
-              height="150"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              title="map"
-              className="rounded-lg"
-            ></iframe>
+            <h3 className="text-lg font-extrabold text-white tracking-wide mb-4">Find Us</h3>
+            <div className="rounded-2xl overflow-hidden border border-[#2A2D34] bg-[#0A1F44]/20">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.986790379563!2d73.85398177465241!3d18.529499068902513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c0883858b873%3A0x1d68fbf2cac75519!2sCOEP%20Technological%20University!5e0!3m2!1sen!2sin!4v1717502913153!5m2!1sen!2sin"
+                width="100%"
+                height="180"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                title="map"
+                className=""
+              ></iframe>
+            </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 border-t border-gray-800 pt-6 text-center text-sm text-gray-500">
-          © {new Date().getFullYear()} Nemesis Racing. All rights reserved.
+        <div className="mt-12 border-t border-[#2A2D34] pt-6 text-center text-sm">
+          <div className="flex items-center justify-center gap-2 text-[#B0B7C3]">
+            <span>© {new Date().getFullYear()} Nemesis Racing.</span>
+            <span className="text-[#B0B7C3]">All rights reserved.</span>
+          </div>
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

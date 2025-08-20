@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-
-import race1 from '@/assets/race-1.jpg';
-import race2 from '@/assets/race-2.jpg';
-import race3 from '@/assets/race-3.jpg';
+import race1 from '/race1.jpg';
+import race2 from '/race2.jpg';
+import race3 from '/race3.jpg';
 
 const images = [race1, race2, race3];
 
-const HeroSection = () => {
+export default function HeroSection() {
   const [currentImage, setCurrentImage] = useState(0);
   const [direction, setDirection] = useState(1);
   const [activeBtn, setActiveBtn] = useState(null);
@@ -30,7 +29,6 @@ const HeroSection = () => {
     setCurrentImage((prev) =>
       type === 'next' ? (prev + 1) % images.length : prev === 0 ? images.length - 1 : prev - 1
     );
-
     if (clicked) {
       setActiveBtn(type);
       startAutoSlide();
@@ -43,28 +41,22 @@ const HeroSection = () => {
   }, []);
 
   const variants = {
-    enter: (direction) => ({
-      x: direction > 0 ? 80 : -80,
-      opacity: 0,
-      scale: 1.05,
-    }),
+    enter: (direction) => ({ x: direction > 0 ? 100 : -100, opacity: 0 }),
     center: {
       x: 0,
       opacity: 1,
-      scale: 1,
       transition: { duration: 1, ease: [0.25, 0.8, 0.25, 1] },
     },
     exit: (direction) => ({
-      x: direction < 0 ? 80 : -80,
+      x: direction < 0 ? 100 : -100,
       opacity: 0,
-      scale: 0.95,
       transition: { duration: 0.8 },
     }),
   };
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
-      {/* Background Images */}
+      {/* Background images (no overlay) */}
       <div className="absolute inset-0">
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
@@ -81,47 +73,43 @@ const HeroSection = () => {
         </AnimatePresence>
       </div>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/50"></div>
-
-      {/* Text Content */}
-      <div className="relative z-10 flex flex-col items-start justify-end h-full px-6 sm:px-10 lg:px-20 pb-12 sm:pb-16 lg:pb-20 text-white">
-        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold italic tracking-wide mb-4 leading-tight">
-          NEMESIS RACING
+      {/* Text remains clean — no background */}
+      <div className="relative z-10 flex flex-col items-start justify-end h-full px-8 lg:px-20 pb-20 text-white">
+        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-wide italic uppercase bg-clip-text text-transparent bg-gradient-to-r from-[#1A73E8] via-[#3DF5FF] to-[#1A73E8]">
+          Nemesis Racing
         </h1>
-        <p className="text-sm sm:text-lg md:text-2xl max-w-lg md:max-w-2xl mb-6 leading-relaxed">
+        <p className="mt-4 text-gray-300 text-lg sm:text-xl max-w-xl leading-relaxed">
           Engineering adrenaline on wheels — pushing speed, style, and innovation to the next level.
         </p>
       </div>
 
-      {/* Navigation Arrows */}
+      {/* Arrows */}
       <div className="absolute bottom-6 right-6 z-30 flex gap-3">
         <button
           onClick={() => handleSlide('prev')}
           className={`p-2 sm:p-3 transition-all touch-manipulation ${
             activeBtn === 'prev' ? 'bg-[#0A0A0A]' : 'bg-[#0047FF]'
-          } hover:bg-[#0A0A0A] text-white`} // removed 'rounded'
+          } hover:bg-[#0A0A0A] text-white`}
         >
           <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
-
         <button
           onClick={() => handleSlide('next')}
           className={`p-2 sm:p-3 transition-all touch-manipulation ${
             activeBtn === 'next' ? 'bg-[#0A0A0A]' : 'bg-[#0047FF]'
-          } hover:bg-[#0A0A0A] text-white`} // removed 'rounded'
+          } hover:bg-[#0A0A0A] text-white`}
         >
           <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
       </div>
 
       {/* Dots */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3 z-20">
         {images.map((_, index) => (
-          <div
+          <button
             key={index}
-            className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all cursor-pointer ${
-              index === currentImage ? 'bg-[#0047FF] scale-110' : 'bg-gray-400'
+            className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all ${
+              index === currentImage ? 'bg-cyan-400' : 'bg-gray-500/70 hover:bg-cyan-300'
             }`}
             onClick={() => {
               setCurrentImage(index);
@@ -133,6 +121,4 @@ const HeroSection = () => {
       </div>
     </section>
   );
-};
-
-export default HeroSection;
+}

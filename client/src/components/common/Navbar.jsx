@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-
 import { useAuth } from '@/context/AuthContext';
+import logo from '/nemesis-logo (2).png'; // adjust path if needed
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,9 +12,11 @@ const Navbar = () => {
 
   const { isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
+  // Scroll behavior
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -44,6 +46,8 @@ const Navbar = () => {
     setIsOpen(false);
   };
 
+  const navItems = ['Home', 'Blogs', 'History', 'About', 'Contact'];
+
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
@@ -51,37 +55,50 @@ const Navbar = () => {
       } ${isAtTop ? 'bg-transparent' : 'bg-[#0A0A0A]/95 backdrop-blur-sm'}`}
     >
       <div className="px-6 lg:px-12 py-3 flex items-center justify-between">
+        {/* Logo */}
         <Link to="/" className="flex items-center">
-          <img src="/logo.png" alt="Nemesis Racing" className="h-10 md:h-12 cursor-pointer" />
+          <img src={logo} alt="Nemesis Racing" className="h-10 md:h-12 cursor-pointer" />
         </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center pt-1 space-x-8 lg:space-x-12 font-bold tracking-wider">
-          {['Home', 'Blogs', 'History', 'About', 'Contact'].map((item, idx) => (
-            <Link
-              key={idx}
-              to={`/${item.toLowerCase() === 'home' ? '' : item.toLowerCase()}`}
-              className={`text-base uppercase italic transition-all duration-300 ${
-                isAtTop ? 'text-white hover:text-[#0047FF]' : 'text-white hover:text-[#0047FF]'
-              }`}
-            >
-              {item}
-            </Link>
-          ))}
+          {navItems.map((item, idx) => {
+            const path = `/${item.toLowerCase() === 'home' ? '' : item.toLowerCase()}`;
+            const isActive = location.pathname === path;
+
+            return (
+              <Link
+                key={idx}
+                to={path}
+                className={`text-base uppercase italic transition-all duration-300 ${
+                  isActive
+                    ? 'text-[#3DF5FF] underline underline-offset-4'
+                    : 'text-white hover:text-[#0047FF]'
+                }`}
+              >
+                {item}
+              </Link>
+            );
+          })}
+
+          {/* Admin Dashboard (only if logged in) */}
           {isAuthenticated && (
             <Link
               to="/admin/dashboard"
-              className={`text-base uppercase italic transition-all duration-300 ${isAtTop ? 'text-white hover:text-[#0047FF]' : 'text-white hover:text-[#0047FF]'}`}
+              className={`text-base uppercase italic transition-all duration-300 ${
+                location.pathname === '/admin/dashboard'
+                  ? 'text-[#3DF5FF] underline underline-offset-4'
+                  : 'text-white hover:text-[#0047FF]'
+              }`}
             >
               Admin Dashboard
             </Link>
           )}
+
           {/* Auth Button */}
           <button
             onClick={handleAuthAction}
-            className={`text-base uppercase italic transition-all duration-300 ${
-              isAtTop ? 'text-white hover:text-[#0047FF]' : 'text-white hover:text-[#0047FF]'
-            }`}
+            className="text-base uppercase italic text-white hover:text-[#0047FF] transition-all duration-300"
           >
             {isAuthenticated ? 'Logout' : 'Login'}
           </button>
@@ -109,17 +126,42 @@ const Navbar = () => {
           </div>
 
           <div className="flex flex-col items-center space-y-6 font-bold tracking-wider mt-8">
-            {['Home', 'Blogs', 'History', 'About', 'Contact'].map((item, idx) => (
+            {navItems.map((item, idx) => {
+              const path = `/${item.toLowerCase() === 'home' ? '' : item.toLowerCase()}`;
+              const isActive = location.pathname === path;
+
+              return (
+                <Link
+                  key={idx}
+                  to={path}
+                  onClick={() => setIsOpen(false)}
+                  className={`text-lg uppercase italic transition-all duration-200 ${
+                    isActive
+                      ? 'text-[#3DF5FF] underline underline-offset-4'
+                      : 'text-white hover:text-[#0047FF]'
+                  }`}
+                >
+                  {item}
+                </Link>
+              );
+            })}
+
+            {/* Admin Dashboard (mobile) */}
+            {isAuthenticated && (
               <Link
-                key={idx}
-                to={`/${item.toLowerCase() === 'home' ? '' : item.toLowerCase()}`}
+                to="/admin/dashboard"
                 onClick={() => setIsOpen(false)}
-                className="text-white text-lg uppercase italic hover:text-[#0047FF] transition-all duration-200"
+                className={`text-lg uppercase italic transition-all duration-200 ${
+                  location.pathname === '/admin/dashboard'
+                    ? 'text-[#3DF5FF] underline underline-offset-4'
+                    : 'text-white hover:text-[#0047FF]'
+                }`}
               >
-                {item}
+                Admin Dashboard
               </Link>
-            ))}
-            {/* Auth Button in Mobile Menu */}
+            )}
+
+            {/* Auth Button */}
             <button
               onClick={handleAuthAction}
               className="text-white text-lg uppercase italic hover:text-[#0047FF] transition-all duration-200"
