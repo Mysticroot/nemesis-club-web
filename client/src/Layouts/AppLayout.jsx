@@ -17,9 +17,9 @@ import LoginPage from '@/features/admin/auth/pages/LoginPage';
 import RegisterPage from '@/features/admin/auth/pages/RegisterPage';
 import DashboardPage from '@/features/admin/dashboard/pages/DashboardPage';
 import ManageBlogPage from '@/features/admin/dashboard/pages/ManageBlogPage';
-import AdminLayout from './Layouts/AdminLayout';
-import SponsorRequestsListPage from './features/admin/dashboard/pages/SponsorRequestsListPage';
-import SponsorsListPage from './features/admin/dashboard/pages/SponsorsListPage';
+import AdminLayout from './AdminLayout';
+import SponsorRequestsListPage from '../features/admin/dashboard/pages/SponsorRequestsListPage';
+import SponsorsListPage from '../features/admin/dashboard/pages/SponsorsListPage';
 
 const AppLayout = () => {
   const location = useLocation();
