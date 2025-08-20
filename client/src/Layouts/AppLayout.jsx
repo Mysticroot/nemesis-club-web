@@ -18,10 +18,10 @@ import BlogDetails from '@/features/general/blog/pages/DetailBlogPage';
 // Admin Pages
 import LoginPage from '@/features/admin/auth/pages/LoginPage';
 import RegisterPage from '@/features/admin/auth/pages/RegisterPage';
-import DashboardPage from '@/features/admin/dashboard/sections/Overview/pages/DashboardPage';
-import ManageBlogPage from '@/features/admin/dashboard/sections/Blog/pages/ManageBlogPage';
-import SponsorRequestsListPage from '@/features/admin/dashboard/sections/Sponsors/components/SponsorRequestList';
-import SponsorsListPage from '@/features/admin/dashboard/sections/Sponsors/components/SponsorsList';
+import DashboardPage from '@/features/admin/dashboard/Overview/pages/DashboardPage';
+import ManageBlogPage from '@/features/admin/dashboard/Blog/pages/ManageBlogPage';
+import SponsorRequestsListPage from '@/features/admin/dashboard/Sponsors/components/SponsorRequestList';
+import SponsorsListPage from '@/features/admin/dashboard/Sponsors/components/SponsorsList';
 
 const AppLayout = () => {
   const location = useLocation();

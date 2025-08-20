@@ -1,8 +1,8 @@
-import BlogList from '@/features/admin/dashboard/sections/Blog/components/BlogList';
+import BlogList from '@/features/admin/dashboard/Blog/components/BlogList';
 import { useBlogs } from '@/context/BlogContext';
 
 const ManageBlogPage = () => {
-  const { blogs,setBlogs, loading } = useBlogs();
+  const { blogs, setBlogs, loading } = useBlogs();
 
   if (loading) {
     return <div>Loading...</div>;

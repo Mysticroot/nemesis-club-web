@@ -25,6 +25,7 @@ export async function fetchApprovedSponsors() {
 export async function updateSponsorStatus(id, status) {
   try {
     const { data: resp } = await axios.put(`/sponsors/requests/${id}/status`, { status });
+    console.log(resp);
     const result = resp.data;
     return result;
   } catch (error) {
