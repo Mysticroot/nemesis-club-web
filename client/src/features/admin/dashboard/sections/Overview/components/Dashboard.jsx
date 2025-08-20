@@ -3,26 +3,12 @@ import HeaderSection from '@/features/admin/dashboard/components/HeaderSection';
 import OverviewCards from './OverviewCards';
 import QuickActions from './QuickActions';
 import { useBlogs } from '@/context/BlogContext';
+import { useSponsor } from '@/context/SponsorContenxt';
 
 const AdminDashboard = () => {
   const { blogs, loading } = useBlogs();
-
-  const sponsorRequests = [
-    {
-      id: 1,
-      company: 'TechCorp Industries',
-      amount: '$5,000',
-      status: 'pending',
-      date: '2024-08-18',
-    },
-    {
-      id: 2,
-      company: 'MechPro Solutions',
-      amount: '$3,000',
-      status: 'pending',
-      date: '2024-08-17',
-    },
-  ];
+  const { sponsorRequests, approvedSponsors, loading: sponsorLoading } = useSponsor();
+  console.log(sponsorRequests);
 
   const sponsors = [
     {

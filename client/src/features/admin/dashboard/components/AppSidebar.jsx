@@ -22,7 +22,7 @@ import { useAuth } from '@/context/AuthContext';
 const AppSidebar = () => {
   const { logout, adminData } = useAuth();
   const location = useLocation();
-  const isOnDashboardIndex = location.pathname === '/admin/dashboard';
+  // const isOnDashboardIndex = location.pathname === '/admin/dashboard';
 
   // Main navigation items
   const mainNavItems = [
@@ -34,7 +34,7 @@ const AppSidebar = () => {
     },
     {
       path: '/admin/dashboard/manage-blogs',
-      label: 'Blog Posts',
+      label: 'Manage Blog Posts',
       icon: FileText,
       description: 'Manage blog content and posts',
     },

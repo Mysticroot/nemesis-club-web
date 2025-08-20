@@ -1,16 +1,20 @@
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import { AuthProvider } from '@/context/AuthContext';
 import AppLayout from '@/Layouts/AppLayout';
+
+import { AuthProvider } from '@/context/AuthContext';
 import { BlogProvider } from '@/context/BlogContext';
+import { SponsorProvider } from '@/context/SponsorContenxt';
 
 const App = () => {
   return (
     <AuthProvider>
       <BlogProvider>
-        <Router>
-          <AppLayout />
-        </Router>
+        <SponsorProvider>
+          <Router>
+            <AppLayout />
+          </Router>
+        </SponsorProvider>
       </BlogProvider>
     </AuthProvider>
   );
