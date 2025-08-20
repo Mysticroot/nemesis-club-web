@@ -1,21 +1,11 @@
-import { useState, useEffect } from 'react';
-// import Overview from '@/features/admin/dashboard/sections/Overview/Overview';
 import HeaderSection from '@/features/admin/dashboard/components/HeaderSection';
 
-import { fetchBlogs } from '@/api/blogApi';
 import OverviewCards from './OverviewCards';
 import QuickActions from './QuickActions';
+import { useBlogs } from '@/context/BlogContext';
 
 const AdminDashboard = () => {
-  const [blogs, setBlogs] = useState([]);
-
-  useEffect(() => {
-    const loadBlogs = async () => {
-      const blogs = await fetchBlogs();
-      setBlogs(blogs);
-    };
-    loadBlogs();
-  }, []);
+  const { blogs, loading } = useBlogs();
 
   const sponsorRequests = [
     {
@@ -50,6 +40,10 @@ const AdminDashboard = () => {
       tier: 'Silver',
     },
   ];
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="flex flex-col">

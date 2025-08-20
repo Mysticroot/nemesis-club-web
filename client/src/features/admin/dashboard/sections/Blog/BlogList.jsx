@@ -1,40 +1,22 @@
+import { Calendar, Edit, File, Trash } from 'lucide-react';
+
 import { Card, CardContent } from '@/components/ui/card';
+import HeaderSection from '@/features/admin/dashboard/components/HeaderSection';
+import { deleteBlog } from '@/api/blogApi';
 
-import HeaderSection from '@/features/admin/dashboard/components/HeaderSection.jsx';
-import { Calendar, Delete, DeleteIcon, Edit, File, PersonStanding, Trash } from 'lucide-react';
-
-// Dummy blog data
-const blogPosts = [
-  {
-    id: 1,
-    title: 'Getting Started with React',
-    excerpt: 'Learn how to set up your first React project step-by-step.',
-    author: 'Shaikh Unais',
-    date: '2025-08-18',
-  },
-  {
-    id: 2,
-    title: 'Understanding State in React',
-    excerpt: 'State is the heart of any interactive component in React.',
-    author: 'Jane Doe',
-    date: '2025-08-16',
-  },
-  {
-    id: 3,
-    title: 'Deploying with Vercel',
-    excerpt: 'A quick guide to deploying React apps using Vercel.',
-    author: 'John Smith',
-    date: '2025-08-14',
-  },
-];
-
-const BlogList = ({ blogs = blogPosts }) => {
-  const handleDelete = (id) => {
-    // API call would go here
-    console.log(`Deleting blog with ID: ${id}`);
-    // After successful deletion, you would typically refresh the list
+const BlogList = ({ blogs, setBlogs }) => {
+  // Deleting Blog
+  const handleDelete = async (id) => {
+    try {
+      await deleteBlog(id);
+      console.log(`Deleting blog with ID: ${id}`);
+      setBlogs((prev) => prev.filter((blog) => blog.id !== id));
+    } catch (error) {
+      console.error('Error deleting blog:', error);
+    }
   };
 
+  // Edit Blog
   const handleEditPost = (id) => {
     // Navigate to edit blog post page
     console.log(`Editing blog with ID: ${id}`);

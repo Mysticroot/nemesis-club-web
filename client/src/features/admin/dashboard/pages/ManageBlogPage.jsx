@@ -1,20 +1,14 @@
-import { useEffect, useState } from 'react';
-
 import BlogList from '@/features/admin/dashboard/sections/Blog/BlogList';
-import { fetchBlogs } from '@/api/blogApi';
+import { useBlogs } from '@/context/BlogContext';
 
 const ManageBlogPage = () => {
-  const [blogs, setBlogs] = useState([]);
+  const { blogs,setBlogs, loading } = useBlogs();
 
-  useEffect(() => {
-    const loadBlogs = async () => {
-      const blogs = await fetchBlogs();
-      setBlogs(blogs);
-    };
-    loadBlogs();
-  }, []);
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-  return <BlogList blogs={blogs} />;
+  return <BlogList blogs={blogs} setBlogs={setBlogs} />;
 };
 
 export default ManageBlogPage;
