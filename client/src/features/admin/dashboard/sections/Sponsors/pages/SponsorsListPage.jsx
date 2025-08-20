@@ -1,4 +1,4 @@
-import SponsorsList from '../sections/Sponsors/SponsorsList';
+import SponsorsList from '../components/SponsorsList';
 
 const SponsorsListPage = () => {
   return <SponsorsList />;

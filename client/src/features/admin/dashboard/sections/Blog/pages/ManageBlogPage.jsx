@@ -1,4 +1,4 @@
-import BlogList from '@/features/admin/dashboard/sections/Blog/BlogList';
+import BlogList from '@/features/admin/dashboard/sections/Blog/components/BlogList';
 import { useBlogs } from '@/context/BlogContext';
 
 const ManageBlogPage = () => {

@@ -4,6 +4,9 @@ import Navbar from '@/components/common/Navbar';
 import Footer from '@/components/common/Footer';
 import ProtectedRoute from '@/components/common/ProtectedRoute';
 
+// Layouts
+import AdminLayout from '@/Layouts/AdminLayout';
+
 // General Pages
 import Home from '@/features/general/home/pages/HomePage';
 import Blogs from '@/features/general/blog/pages/BlogPage';
@@ -15,11 +18,10 @@ import BlogDetails from '@/features/general/blog/pages/DetailBlogPage';
 // Admin Pages
 import LoginPage from '@/features/admin/auth/pages/LoginPage';
 import RegisterPage from '@/features/admin/auth/pages/RegisterPage';
-import DashboardPage from '@/features/admin/dashboard/pages/DashboardPage';
-import ManageBlogPage from '@/features/admin/dashboard/pages/ManageBlogPage';
-import AdminLayout from './AdminLayout';
-import SponsorRequestsListPage from '../features/admin/dashboard/pages/SponsorRequestsListPage';
-import SponsorsListPage from '../features/admin/dashboard/pages/SponsorsListPage';
+import DashboardPage from '@/features/admin/dashboard/sections/Overview/pages/DashboardPage';
+import ManageBlogPage from '@/features/admin/dashboard/sections/Blog/pages/ManageBlogPage';
+import SponsorRequestsListPage from '@/features/admin/dashboard/sections/Sponsors/components/SponsorRequestList';
+import SponsorsListPage from '@/features/admin/dashboard/sections/Sponsors/components/SponsorsList';
 
 const AppLayout = () => {
   const location = useLocation();
