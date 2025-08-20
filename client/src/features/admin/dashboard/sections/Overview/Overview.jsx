@@ -1,5 +1,5 @@
-import DashboardCards from '@/features/admin/dashboard/manage-overview/OverviewCards';
-import QuickActions from '@/features/admin/dashboard/manage-overview/QuickActions';
+import DashboardCards from '@/features/admin/dashboard/sections/Overview/OverviewCards';
+import QuickActions from '@/features/admin/dashboard/sections/Overview/QuickActions';
 
 const Overview = ({ blogs, sponsorRequests, sponsors, activeTab, setActiveTab }) => {
   return (

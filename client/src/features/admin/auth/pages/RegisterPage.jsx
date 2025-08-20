@@ -1,4 +1,4 @@
-import AdminRegisterForm from '@/features/admin/auth/AdminRegisterForm';
+import AdminRegisterForm from '@/features/admin/auth/components/AdminRegisterForm';
 
 const RegisterPage = () => {
   return (

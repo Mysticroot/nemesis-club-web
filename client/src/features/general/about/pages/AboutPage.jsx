@@ -1,34 +1,7 @@
-import { Users, Lightbulb, Leaf, Trophy } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { pillars } from '../components/pillars.jsx';
 
 const AboutPage = () => {
-  const pillars = [
-    {
-      title: 'Innovation & Engineering',
-      description:
-        'Participants design and build buggies that are fast, efficient, safe, and technically sound. Creativity in design and practical application of engineering principles are at the core of this competition.',
-      icon: <Lightbulb className="w-10 h-10 text-[#1A73E8]" />,
-    },
-    {
-      title: 'Sustainability & Responsibility',
-      description:
-        'We promote energy-efficient technologies, eco-friendly materials, and responsible practices, ensuring a sustainable future for motorsports and engineering innovation.',
-      icon: <Leaf className="w-10 h-10 text-[#C3F73A]" />,
-    },
-    {
-      title: 'Learning & Development',
-      description:
-        'Hands-on experience in engineering, teamwork, leadership, and problem-solving prepares participants to tackle real-world challenges in their careers and beyond.',
-      icon: <Trophy className="w-10 h-10 text-[#FF5C00]" />,
-    },
-    {
-      title: 'Community & Passion',
-      description:
-        'Mechathon connects students, professionals, and motorsport enthusiasts. We believe in sharing knowledge, building networks, and celebrating passion for engineering and racing.',
-      icon: <Users className="w-10 h-10 text-[#D72638]" />,
-    },
-  ];
-
   return (
     <div className="bg-[#0E0E0E] min-h-screen text-white">
       {/* Hero Section */}
@@ -111,7 +84,7 @@ const AboutPage = () => {
                        border border-[#1A73E8]/20 hover:border-[#1A73E8]/60 
                        shadow-md hover:shadow-[#1A73E8]/50 hover:-translate-y-1 transition-all"
           >
-            <div className="flex justify-center mb-4">{pillar.icon}</div>
+            <div className="flex justify-center mb-4">{pillar.icon()}</div>
             <h3 className="text-xl font-bold mb-2 text-[#1A73E8]">{pillar.title}</h3>
             <p className="text-[#B0B7C3]">{pillar.description}</p>
           </motion.div>
