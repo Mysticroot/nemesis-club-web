@@ -8,9 +8,9 @@ import BlogDetails from './pages/BlogDetails';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import History from './pages/History';
-import LoginPage from './pages/admin/LoginPage';
-import RegisterPage from './pages/admin/RegisterPage';
-import DashboardPage from './pages/admin/DashboardPage';
+import LoginPage from './pages/AdminPages/LoginPage';
+import RegisterPage from './pages/AdminPages/RegisterPage';
+import DashboardPage from './pages/AdminPages/DashboardPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './context/AuthContext';
 

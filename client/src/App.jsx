@@ -4,16 +4,16 @@ import { AuthProvider } from '@/context/AuthContext';
 import Navbar from '@/components/common/Navbar';
 import Footer from '@/components/common/Footer';
 
-import Home from '@/pages/common/Home';
-import Blogs from '@/pages/common/Blogs';
-import About from '@/pages/common/About';
-import History from '@/pages/common/History';
-import LoginPage from '@/pages/admin/LoginPage';
-import RegisterPage from '@/pages/admin/RegisterPage';
-import DashboardPage from '@/pages/admin/DashboardPage';
+import Home from '@/pages/GeneralPages/HomePage';
+import Blogs from '@/pages/GeneralPages/BlogPage';
+import About from '@/pages/GeneralPages/AboutPage';
+import History from '@/pages/GeneralPages/HistoryPage';
+import LoginPage from '@/pages/AdminPages/LoginPage';
+import RegisterPage from '@/pages/AdminPages/RegisterPage';
+import DashboardPage from '@/pages/AdminPages/DashboardPage';
 import ProtectedRoute from '@/components/common/ProtectedRoute';
-import BlogDetails from '@/components/Blogs/BlogDetails';
-import Contact from '@/pages/common/Contact';
+import BlogDetails from '@/features/general/blog/BlogDetails';
+import Contact from '@/pages/GeneralPages/ContactPage';
 
 // Optional: extract layout logic into a wrapper
 function AppLayout() {

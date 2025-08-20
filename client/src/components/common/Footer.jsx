@@ -1,8 +1,6 @@
-// src/components/common/Footer.jsx
-import React from 'react';
 import { FaInstagram, FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
 
-export default function Footer() {
+const Footer = () => {
   const socials = [
     { Component: FaInstagram, link: 'https://instagram.com' },
     { Component: FaFacebookF, link: 'https://facebook.com' },
@@ -124,4 +122,6 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

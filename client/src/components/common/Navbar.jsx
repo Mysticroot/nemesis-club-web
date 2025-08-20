@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import { useAuth } from '@/context/AuthContext';
-import logo from '../auth/nemesis-logo (2).png';
 
-export default function Navbar() {
+import { useAuth } from '@/context/AuthContext';
+
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [showNavbar, setShowNavbar] = useState(true);
@@ -52,7 +52,7 @@ export default function Navbar() {
     >
       <div className="px-6 lg:px-12 py-3 flex items-center justify-between">
         <Link to="/" className="flex items-center">
-          <img src={logo} alt="Nemesis Racing" className="h-10 md:h-12 cursor-pointer" />
+          <img src="/logo.png" alt="Nemesis Racing" className="h-10 md:h-12 cursor-pointer" />
         </Link>
 
         {/* Desktop Menu */}
@@ -131,4 +131,6 @@ export default function Navbar() {
       )}
     </nav>
   );
-}
+};
+
+export default Navbar;
