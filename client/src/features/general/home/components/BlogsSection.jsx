@@ -1,6 +1,9 @@
+// src/components/home/BlogSection.jsx
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
-const BlogSection = () => {
+export default function BlogSection() {
   const sections = [
     {
       title: 'Engineering the Future',
@@ -14,7 +17,7 @@ const BlogSection = () => {
         { value: '50+', label: 'Projects Completed' },
         { value: '15+', label: 'Team Members' },
       ],
-      image: 'https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=600&h=400&fit=crop',
+      image: 'https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=800&h=600&fit=crop',
     },
     {
       title: 'Innovation at Every Step',
@@ -27,7 +30,7 @@ const BlogSection = () => {
         { value: '20+', label: 'Awards Won' },
         { value: '10+', label: 'Years Experience' },
       ],
-      image: 'https://images.unsplash.com/photo-1502877338535-766e1452684a?w=600&h=400&fit=crop',
+      image: 'https://images.unsplash.com/photo-1502877338535-766e1452684a?w=800&h=600&fit=crop',
     },
     {
       title: 'Shaping Tomorrow',
@@ -45,40 +48,66 @@ const BlogSection = () => {
   ];
 
   return (
-    <section className="py-12 sm:py-16 bg-[#0A0A0A]">
+    <section className="py-16 sm:py-20 bg-[#0E0E0E] relative overflow-hidden">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 sm:mb-12 px-4 sm:px-6 max-w-6xl mx-auto gap-4">
-        <h2 className="text-2xl sm:text-3xl font-bold text-white">Latest from Our Blog</h2>
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-12 sm:mb-16 px-4 sm:px-6 max-w-7xl mx-auto gap-6">
+        <motion.h2
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-3xl sm:text-4xl font-extrabold uppercase tracking-widest 
+                     text-transparent bg-clip-text 
+                     bg-gradient-to-r from-[#1A73E8] via-[#3DF5FF] to-[#1A73E8]"
+        >
+          Latest from Our Blog
+        </motion.h2>
+
         <Link
           to="/blogs"
-          className="px-4 py-2 bg-[#0047FF] text-white hover:bg-white hover:text-[#0A0A0A] transition-colors duration-300 font-semibold uppercase tracking-wide shadow-md inline-block text-center rounded-md"
+          className="px-6 py-3 font-bold uppercase tracking-wide
+           bg-gradient-to-r from-[#1A73E8] via-[#3DF5FF] to-[#1A73E8]
+           text-black shadow-lg shadow-[#1A73E8]/40
+           hover:scale-105 transform transition-all duration-300"
         >
           View All
         </Link>
       </div>
 
       {/* Alternating Sections */}
-      <div className="space-y-16 sm:space-y-20">
+      <div className="space-y-20 sm:space-y-28">
         {sections.map((sec, idx) => (
-          <div
+          <motion.div
             key={idx}
-            className={`max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 items-center px-4 sm:px-6 ${
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: idx * 0.2 }}
+            className={`max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-14 items-center px-4 sm:px-6 ${
               idx % 2 === 1 ? 'md:grid-flow-col-dense' : ''
             }`}
           >
             {/* Text */}
             <div className={`${idx % 2 === 1 ? 'md:col-start-2' : ''} order-2 md:order-1`}>
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">{sec.title}</h3>
-              <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6">
-                {sec.text}
-              </p>
-              <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8">
+              <h3
+                className="text-2xl sm:text-3xl font-bold text-white uppercase tracking-wide 
+             mb-6 italic -skew-x-6"
+              >
+                {' '}
+                {sec.title}
+              </h3>
+              <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-4">{sec.text}</p>
+              <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-8">
                 {sec.subText}
               </p>
-              <div className="grid grid-cols-2 gap-4 sm:gap-6">
+              <div className="grid grid-cols-2 gap-6">
                 {sec.stats.map((s, i) => (
-                  <div className="text-center" key={i}>
-                    <div className="text-2xl sm:text-3xl font-bold text-[#0047FF] mb-2">
+                  <div key={i} className="text-center">
+                    <div
+                      className="text-3xl sm:text-4xl font-extrabold 
+                                    bg-gradient-to-r from-[#D72638] to-[#FF5C00] 
+                                    text-transparent bg-clip-text drop-shadow-lg mb-2"
+                    >
                       {s.value}
                     </div>
                     <div className="text-xs sm:text-sm text-gray-400 uppercase tracking-wide">
@@ -95,18 +124,20 @@ const BlogSection = () => {
                 idx % 2 === 1 ? 'md:col-start-1' : ''
               }`}
             >
-              <img
+              <motion.img
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: 'spring', stiffness: 200 }}
                 src={sec.image}
                 alt={sec.title}
-                className="shadow-xl mx-auto w-full max-w-lg sm:max-w-2xl h-64 sm:h-80 object-cover 
-                  [clip-path:polygon(8%_0,100%_0,92%_100%,0%_100%)] 
-                  border-4 border-[#0047FF] rounded-md"
+                className="w-full max-w-lg sm:max-w-2xl h-64 sm:h-80 object-cover
+                           rounded-2xl border-4 border-[#1A73E8] 
+                           shadow-xl shadow-[#1A73E8]/30
+                           [clip-path:polygon(8%_0,100%_0,92%_100%,0%_100%)]"
               />
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>
   );
-};
-export default BlogSection;
+}
