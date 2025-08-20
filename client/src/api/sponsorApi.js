@@ -14,6 +14,7 @@ export async function fetchSponsorRequests() {
 export async function fetchApprovedSponsors() {
   try {
     const { data: resp } = await axios.get('/sponsors/requests/approved');
+    console.log(resp);
     const result = resp.data;
     return result;
   } catch (error) {

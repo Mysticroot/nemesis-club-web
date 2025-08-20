@@ -1,8 +1,6 @@
-import SponsorRequestsList from '@/features/admin/dashboard/sections/Sponsors/components/SponsorRequestList';
+import SponsorRequestsList from '@/features/admin/dashboard/Sponsors/components/SponsorRequestList';
 
 const SponsorRequestsListPage = () => {
-
-
   return <SponsorRequestsList />;
 };
 

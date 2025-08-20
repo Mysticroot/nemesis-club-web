@@ -20,8 +20,9 @@ import LoginPage from '@/features/admin/auth/pages/LoginPage';
 import RegisterPage from '@/features/admin/auth/pages/RegisterPage';
 import DashboardPage from '@/features/admin/dashboard/Overview/pages/DashboardPage';
 import ManageBlogPage from '@/features/admin/dashboard/Blog/pages/ManageBlogPage';
-import SponsorRequestsListPage from '@/features/admin/dashboard/Sponsors/components/SponsorRequestList';
-import SponsorsListPage from '@/features/admin/dashboard/Sponsors/components/SponsorsList';
+
+import SponsorRequestsListPage from '@/features/admin/dashboard/Sponsors/pages/SponsorRequestsListPage';
+import SponsorsListPage from '@/features/admin/dashboard/Sponsors/pages/SponsorsListPage';
 
 const AppLayout = () => {
   const location = useLocation();

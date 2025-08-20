@@ -56,7 +56,7 @@ export const updateSponsorRequestStatus = async (req, res) => {
 };
 
 // Fetch only approved sponsors (Public)
-// @route   GET /api/sponsors/approved
+// @route   GET /api/requests/approved
 export const fetchApprovedSponsors = async (req, res) => {
   try {
     const result = await pool.query(
