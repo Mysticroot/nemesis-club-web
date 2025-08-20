@@ -50,6 +50,12 @@ const AppSidebar = () => {
       icon: Users,
       description: 'Manage sponsor accounts',
     },
+    {
+      path: '/admin/dashboard/create-blog',
+      label: 'Create Blog Post',
+      icon: Users,
+      description: 'Create a new blog post',
+    },
   ];
 
   // Function to get navigation link classes

@@ -46,7 +46,7 @@ const OverviewCards = ({ blogs, sponsorRequests, sponsors }) => {
           <HandHeart className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">$17.5K</div>
+          <div className="text-2xl font-bold">$0.5K</div>
           <p className="text-xs text-muted-foreground">+15% from last month</p>
         </CardContent>
       </Card>
