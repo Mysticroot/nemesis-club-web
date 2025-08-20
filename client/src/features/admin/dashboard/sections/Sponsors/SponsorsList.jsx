@@ -1,4 +1,5 @@
 import { Card, CardContent } from '@/components/ui/card';
+import HeaderSection from '@/features/admin/dashboard/components/HeaderSection.jsx';
 
 // Dummy data
 const dummySponsors = [
@@ -28,10 +29,7 @@ const dummySponsors = [
 const SponsorsList = () => {
   return (
     <div className="space-y-6">
-      <div>
-        <h2 className="text-3xl font-bold tracking-tight">Current Sponsors</h2>
-        <p className="text-muted-foreground">View and manage your club's sponsors.</p>
-      </div>
+      <HeaderSection title="Current Sponsors" subtitle="View and manage your club's sponsors." />
 
       <div className="space-y-4">
         {dummySponsors.map((sponsor) => (

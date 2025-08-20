@@ -1,5 +1,7 @@
 import { Card, CardContent } from '@/components/ui/card';
 
+import HeaderSection from '@/features/admin/dashboard/components/HeaderSection.jsx';
+
 // Dummy blog data
 const blogPosts = [
   {
@@ -28,12 +30,10 @@ const blogPosts = [
 const BlogList = () => {
   return (
     <div className="space-y-6">
-      <div>
-        <h2 className="text-3xl font-bold tracking-tight">Latest Blog Posts</h2>
-        <p className="text-muted-foreground">
-          Explore our recent articles, tutorials, and updates.
-        </p>
-      </div>
+      <HeaderSection
+        title="Latest Blog Posts"
+        subtitle="Explore our recent articles, tutorials, and updates."
+      />
 
       <div className="space-y-4">
         {blogPosts.map((post) => (

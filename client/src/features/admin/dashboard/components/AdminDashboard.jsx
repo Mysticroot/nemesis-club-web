@@ -2,6 +2,7 @@
 
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import Overview from '@/features/admin/dashboard/sections/Overview/Overview';
+import HeaderSection from './HeaderSection';
 
 const AdminDashboard = () => {
   const blogs = [
@@ -57,8 +58,9 @@ const AdminDashboard = () => {
 
   return (
     <div className="flex flex-col">
-      <div className="h-14" /> {/* Spacer below fixed navbar */}
-      <main className="flex-1 p-4 sm:p-6">
+      <HeaderSection title="Dashboard" subtitle="Welcome back to your admin panel." />
+      <div className="h-10" /> {/* Spacer below fixed navbar */}
+      <main className="flex-1 p-1 sm:p-0">
         <Overview sponsorRequests={sponsorRequests} sponsors={sponsors} blogs={blogs} />
       </main>
     </div>

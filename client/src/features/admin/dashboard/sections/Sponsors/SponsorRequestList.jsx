@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { HandHeart, Check, X } from 'lucide-react';
 
 import { Card, CardContent } from '@/components/ui/card';
+import HeaderSection from '@/features/admin/dashboard/components/HeaderSection.jsx';
 
 const initialRequests = [
   {
@@ -28,10 +29,10 @@ const SponsorRequestsList = () => {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h2 className="text-3xl font-bold tracking-tight">Sponsor Requests</h2>
-        <p className="text-muted-foreground">Review and manage sponsorship applications.</p>
-      </div>
+      <HeaderSection
+        title="Sponsor Requests"
+        subtitle="Review and manage sponsorship applications."
+      />
 
       {sponsorRequests.length === 0 ? (
         <Card>
