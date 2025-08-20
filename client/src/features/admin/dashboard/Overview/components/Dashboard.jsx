@@ -8,26 +8,8 @@ import { useSponsor } from '@/context/SponsorContenxt';
 const AdminDashboard = () => {
   const { blogs, loading } = useBlogs();
   const { sponsorRequests, approvedSponsors, loading: sponsorLoading } = useSponsor();
-  console.log(sponsorRequests);
 
-  const sponsors = [
-    {
-      id: 1,
-      company: 'Innovative Engineering',
-      amount: '$10,000',
-      date: '2024-01-15',
-      tier: 'Gold',
-    },
-    {
-      id: 2,
-      company: 'Future Tech',
-      amount: '$7,500',
-      date: '2024-02-20',
-      tier: 'Silver',
-    },
-  ];
-
-  if (loading) {
+  if (loading || sponsorLoading) {
     return <div>Loading...</div>;
   }
 
@@ -38,7 +20,11 @@ const AdminDashboard = () => {
       <main className="flex-1 p-1 sm:p-0">
         <div className="space-y-8">
           <div className="grid gap-4 md:grid-cols-6 lg:grid-cols-4">
-            <OverviewCards blogs={blogs} sponsorRequests={sponsorRequests} sponsors={sponsors} />
+            <OverviewCards
+              blogs={blogs}
+              sponsorRequests={sponsorRequests}
+              sponsors={approvedSponsors}
+            />
           </div>
 
           <div className="grid">

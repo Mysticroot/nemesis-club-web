@@ -3,6 +3,8 @@ import { Users, FileText, HandHeart } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const OverviewCards = ({ blogs, sponsorRequests, sponsors }) => {
+  const pendingReq = sponsorRequests.filter((req) => req.status === 'pending');
+
   return (
     <>
       <Card>
@@ -22,7 +24,7 @@ const OverviewCards = ({ blogs, sponsorRequests, sponsors }) => {
           <HandHeart className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{sponsorRequests.length}</div>
+          <div className="text-2xl font-bold">{pendingReq.length}</div>
           <p className="text-xs text-muted-foreground">Awaiting review</p>
         </CardContent>
       </Card>
