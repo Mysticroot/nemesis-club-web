@@ -1,5 +1,3 @@
-// src/pages/BlogDetails.jsx
-import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 
 const blogs = [
@@ -42,7 +40,7 @@ const blogs = [
   },
 ];
 
-const BlogDetails = () => {
+const DetailBlogPage = () => {
   const { id } = useParams();
   const blog = blogs.find((b) => b.id === parseInt(id));
 
@@ -106,4 +104,4 @@ const BlogDetails = () => {
     </div>
   );
 };
-export default BlogDetails;
+export default DetailBlogPage;

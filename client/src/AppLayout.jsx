@@ -1,25 +1,26 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import Blogs from './pages/Blogs';
-import BlogDetails from './pages/BlogDetails';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import History from './pages/History';
-import LoginPage from './pages/AdminPages/LoginPage';
-import RegisterPage from './pages/AdminPages/RegisterPage';
-import DashboardPage from './pages/AdminPages/DashboardPage';
-import ProtectedRoute from './components/ProtectedRoute';
-import { AuthProvider } from './context/AuthContext';
+import { Routes, Route, useLocation } from 'react-router-dom';
+// Components
+import Navbar from '@/components/common/Navbar';
+import Footer from '@/components/common/Footer';
+import ProtectedRoute from '@/components/common/ProtectedRoute';
 
-// Optional: extract layout logic into a wrapper
-export default function AppLayout() {
+// General Pages
+import Home from '@/pages/GeneralPages/HomePage';
+import Blogs from '@/pages/GeneralPages/BlogPage';
+import About from '@/pages/GeneralPages/AboutPage';
+import History from '@/pages/GeneralPages/HistoryPage';
+import Contact from '@/pages/GeneralPages/ContactPage';
+import BlogDetails from '@/pages/GeneralPages/DetailBlogPage';
+
+// Admin Pages
+import LoginPage from '@/pages/AdminPages/LoginPage';
+import RegisterPage from '@/pages/AdminPages/RegisterPage';
+import DashboardPage from '@/pages/AdminPages/DashboardPage';
+
+const AppLayout = () => {
   const location = useLocation();
 
-  // List of paths where you want to hide the Navbar and Footer
-  const hiddenNavbarRoutes = ['/admin/dashboard', '/admin/create-blog', '/admin/create-history'];
+  const hiddenNavbarRoutes = ['/admin/dashboard'];
 
   const shouldHideNavbar = hiddenNavbarRoutes.includes(location.pathname);
 
@@ -64,4 +65,6 @@ export default function AppLayout() {
       {!shouldHideNavbar && <Footer />}
     </>
   );
-}
+};
+
+export default AppLayout;
