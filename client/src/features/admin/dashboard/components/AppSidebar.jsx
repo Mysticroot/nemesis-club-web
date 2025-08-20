@@ -1,14 +1,5 @@
-import { NavLink, Link } from 'react-router-dom';
-import {
-  FileText,
-  HandHeart,
-  Home,
-  LayoutDashboard,
-  Users,
-  LogOut,
-  Settings,
-  Shield,
-} from 'lucide-react';
+import { NavLink, Link, useLocation } from 'react-router-dom';
+import { FileText, HandHeart, Home, LayoutDashboard, Users, LogOut, Shield } from 'lucide-react';
 
 import {
   Sidebar,
@@ -30,6 +21,8 @@ import { useAuth } from '@/context/AuthContext';
 
 const AppSidebar = () => {
   const { logout, adminData } = useAuth();
+  const location = useLocation();
+  const isOnDashboardIndex = location.pathname === '/admin/dashboard';
 
   // Main navigation items
   const mainNavItems = [
@@ -123,10 +116,15 @@ const AppSidebar = () => {
             </SidebarGroupLabel>
             <SidebarGroupContent className="px-2">
               <SidebarMenu className="space-y-1">
-                {mainNavItems.map((item) => (
-                  <SidebarMenuItem key={item.path}>
-                    <NavLink to={item.path}>
-                      {({ isActive }) => (
+                {mainNavItems.map((item) => {
+                  const isActive =
+                    item.path === '/admin/dashboard'
+                      ? location.pathname === '/admin/dashboard'
+                      : location.pathname.startsWith(item.path);
+
+                  return (
+                    <SidebarMenuItem key={item.path}>
+                      <NavLink to={item.path}>
                         <SidebarMenuButton
                           className={getNavLinkClasses(isActive)}
                           title={item.description}
@@ -138,10 +136,10 @@ const AppSidebar = () => {
                             <div className="ml-auto w-2 h-2 rounded-full bg-primary-foreground opacity-60" />
                           )}
                         </SidebarMenuButton>
-                      )}
-                    </NavLink>
-                  </SidebarMenuItem>
-                ))}
+                      </NavLink>
+                    </SidebarMenuItem>
+                  );
+                })}
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
@@ -156,9 +154,9 @@ const AppSidebar = () => {
             <SidebarGroupContent className="px-2">
               <SidebarMenu>
                 <SidebarMenuItem>
-                  <Link to="/" target="_blank" rel="noopener noreferrer">
+                  <Link to="/">
                     <SidebarMenuButton
-                      className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-200 hover:shadow-sm hover:scale-[1.02] active:scale-[0.98]"
+                      className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-200 hover:shadow-sm hover:scale-[1.02] active:scale-[0.98] hover:cursor-pointer"
                       title="View live website"
                       aria-label="Open home page in new tab"
                     >
