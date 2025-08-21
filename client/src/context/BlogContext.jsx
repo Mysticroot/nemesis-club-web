@@ -4,6 +4,8 @@ import { createContext, useContext, useEffect, useState } from 'react';
 const BlogContext = createContext();
 
 export function BlogProvider({ children }) {
+
+  
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
 

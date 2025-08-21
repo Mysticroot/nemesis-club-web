@@ -1,10 +1,13 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { fetchSponsorRequests, fetchApprovedSponsors, updateSponsorStatus } from '@/api/sponsorApi';
 import { fetchAllAdmins } from '@/api/adminApi';
+import { useAuth } from '@/context/AuthContext';
 
 const SponsorContext = createContext();
 
 export function SponsorProvider({ children }) {
+  const { isAuthenticated, loading: authLoading } = useAuth();
+
   const [sponsorRequests, setSponsorRequests] = useState([]);
   const [approvedSponsors, setApprovedSponsors] = useState([]);
   const [admins, setAdmins] = useState([]);
@@ -54,10 +57,12 @@ export function SponsorProvider({ children }) {
   };
 
   useEffect(() => {
-    loadSponsorRequests();
-    loadApprovedSponsors();
-    loadAdmins();
-  }, []);
+    if (!authLoading && isAuthenticated) {
+      loadSponsorRequests();
+      loadApprovedSponsors();
+      loadAdmins();
+    }
+  }, [authLoading, isAuthenticated]);
 
   return (
     <SponsorContext.Provider
