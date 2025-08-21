@@ -34,11 +34,11 @@ export const AdminRegisterForm = () => {
 
     try {
       const { data: resp } = await axios.post('/admin/register', registerForm);
-      console.log(resp);
+      // console.log(resp);
       setSuccess('Account created successfully! Redirecting to login...');
       setTimeout(() => navigate('/admin/login'), 2000);
     } catch (err) {
-      console.log();
+      // console.log();
       setError(err.response?.data?.message || 'Registration failed. Please try again.');
     } finally {
       setLoading(false);

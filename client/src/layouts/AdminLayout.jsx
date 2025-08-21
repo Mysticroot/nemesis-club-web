@@ -10,7 +10,7 @@ const AdminLayout = () => {
         <div className="flex-1 flex flex-col">
           <header className="fixed top-0 z-40 w-full border-b bg-background/95 backdrop-blur">
             <div className="flex h-14 items-center px-4 gap-4">
-              <SidebarTrigger />
+              <SidebarTrigger className='cursor-pointer' />
               <div className="flex-1" />
             </div>
           </header>

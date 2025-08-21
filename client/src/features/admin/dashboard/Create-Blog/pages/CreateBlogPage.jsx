@@ -9,6 +9,7 @@ import ContentSection from '@/features/admin/dashboard/Create-Blog/components/Co
 import TitleSection from '@/features/admin/dashboard/Create-Blog/components/TitleSection';
 import SideBar from '@/features/admin/dashboard/Create-Blog/components/SideBar';
 import PreviewSection from '@/features/admin/dashboard/Create-Blog/components/PreviewSection';
+import { createBlog } from '@/api/blogApi';
 
 const CreateBlogPage = () => {
   const [formData, setFormData] = useState({
@@ -60,25 +61,13 @@ const CreateBlogPage = () => {
     setSaveStatus('publishing');
 
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const response = await createBlog(formData);
 
-      const blogData = {
-        ...formData,
-        published: true,
-        author_id: 'current-admin-id', // Would come from auth context
-        created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString(),
-      };
-
-      console.log('Blog data to publish:', blogData);
-
+      // console.log('Blog data to publish:', response);
       setSaveStatus('published');
-      setTimeout(() => setSaveStatus(''), 3000);
     } catch (error) {
       console.error('Error publishing blog:', error);
       setSaveStatus('error');
-      setTimeout(() => setSaveStatus(''), 3000);
     } finally {
       setIsLoading(false);
     }
