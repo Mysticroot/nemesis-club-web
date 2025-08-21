@@ -90,8 +90,8 @@ const AppSidebar = () => {
   };
 
   return (
-    <Sidebar className="h-screen z-30 border-r border-border/50 overflow-x-hidden">
-      <SidebarContent className="flex flex-col h-full">
+    <Sidebar className="h-screen z-30 border-r border-border/50 ">
+      <SidebarContent className="overflow-x-hidden">
         {/* Header */}
         <SidebarHeader className="p-4">
           <div className="flex items-center justify-between">
@@ -115,7 +115,7 @@ const AppSidebar = () => {
         <Separator className="mx-4" />
 
         {/* Main Navigation */}
-        <div className="flex-1  py-4">
+        <div className="flex-1 py-3">
           <SidebarGroup>
             <SidebarGroupLabel className="text-xs font-medium text-muted-foreground px-4 mb-2">
               NAVIGATION
@@ -154,7 +154,7 @@ const AppSidebar = () => {
 
           {/* Quick Actions */}
           <SidebarGroup>
-            <SidebarGroupLabel className="text-xs font-medium text-muted-foreground px-4 mb-2">
+            <SidebarGroupLabel className="text-xs font-medium text-muted-foreground px-4">
               QUICK ACTIONS
             </SidebarGroupLabel>
             <SidebarGroupContent className="px-2">
@@ -177,13 +177,12 @@ const AppSidebar = () => {
           </SidebarGroup>
         </div>
 
-        {/* Footer / Logout */}
-        <SidebarFooter className="p-4 border-t border-border/50">
-          <SidebarMenuItem>
+        <SidebarFooter className="p-2 border-t border-border/50">
+          <SidebarMenuItem className="list-none">
             <Button
               onClick={handleLogout}
               variant="outline"
-              className="w-full justify-start gap-3 px-3 py-2.5 text-sm border-destructive/20 text-destructive hover:bg-destructive  hover:cursor-pointer transition-all duration-200 hover:shadow-sm"
+              className="w-full justify-start gap-3 px-3 py-2 text-sm border-destructive/20 text-destructive hover:bg-destructive hover:cursor-pointer transition-all duration-200 hover:shadow-sm "
               aria-label="Logout from admin panel"
             >
               <LogOut className="w-4 h-4 flex-shrink-0" />
@@ -193,7 +192,7 @@ const AppSidebar = () => {
 
           {/* User Info */}
           {adminData && (
-            <div className="mt-3 px-3 py-2 rounded-lg bg-muted/30 border border-border/50">
+            <div className="mt-3 px-3 py-1 rounded-lg bg-muted/30 border border-border/50">
               <div className="flex items-center gap-2">
                 <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
                   <span className="text-xs font-medium text-primary">

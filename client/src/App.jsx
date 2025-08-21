@@ -1,6 +1,6 @@
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import AppLayout from '@/Layouts/AppLayout';
+import AppLayout from '@/layouts/AppLayout';
 
 import { AuthProvider } from '@/context/AuthContext';
 import { BlogProvider } from '@/context/BlogContext';

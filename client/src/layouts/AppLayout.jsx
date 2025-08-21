@@ -5,7 +5,7 @@ import Footer from '@/components/common/Footer';
 import ProtectedRoute from '@/components/common/ProtectedRoute';
 
 // Layouts
-import AdminLayout from '@/Layouts/AdminLayout';
+import AdminLayout from '@/layouts/AdminLayout';
 
 // General Pages
 import Home from '@/features/general/home/pages/HomePage';
@@ -32,6 +32,7 @@ const AppLayout = () => {
     '/admin/dashboard/manage-blogs',
     '/admin/dashboard/sponsor-requests',
     '/admin/dashboard/sponsors',
+    '/admin/dashboard/create-blog',
   ];
 
   const shouldHideNavbar = hiddenNavbarRoutes.includes(location.pathname);
