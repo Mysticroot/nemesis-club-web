@@ -23,7 +23,7 @@ import ManageBlogPage from '@/features/admin/dashboard/Blog/pages/ManageBlogPage
 
 import CurrentSponsorsPage from '@/features/admin/dashboard/Sponsors/pages/CurrentSponsorsPage';
 import CreateBlogPage from '@/features/admin/dashboard/Create-Blog/pages/CreateBlogPage';
-import SponsorRequestPage from '@/features/admin/dashboard/Requests/pages/SponsorRequestsListPage';
+import SponsorRequestPage from '@/features/admin/dashboard/Requests/pages/SponsorRequestPage';
 
 const AppLayout = () => {
   const location = useLocation();
