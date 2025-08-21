@@ -23,73 +23,82 @@ const AdminList = ({ admins = [], handleDeleteAdmin }) => {
   };
 
   return (
-    <div className="overflow-x-auto">
-      <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm">
-        <thead className="bg-gradient-to-r from-gray-50 to-gray-100">
-          <tr>
-            <th className="px-8 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider border-b border-gray-200">
-              Admin Names
-            </th>
-            <th className="px-8 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider border-b border-gray-200">
-              Email
-            </th>
-            <th className="px-8 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider border-b border-gray-200">
-              Admin ID
-            </th>
-            <th className="px-8 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider border-b border-gray-200">
-              Actions
-            </th>
-          </tr>
-        </thead>
-        <tbody className="bg-white divide-y divide-gray-100">
-          {admins.map((admin, index) => (
-            <tr
-              key={admin.id}
-              className={`hover:bg-blue-50 transition-colors duration-200 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-25'}`}
-            >
-              <td className="px-8 py-5 whitespace-nowrap text-sm font-medium text-gray-900">
-                {admin.name}
-              </td>
-              <td className="px-8 py-5 whitespace-nowrap text-sm text-gray-600">{admin.email}</td>
-              <td className="px-8 py-5 whitespace-nowrap text-xs text-gray-500 font-mono bg-gray-50 rounded-md px-2 py-1">
-                {admin.id}
-              </td>
-              <td className="px-8 py-5 whitespace-nowrap text-sm text-gray-600">
-                <AlertDialog>
-                  <AlertDialogTrigger asChild>
-                    <button
-                      className="text-red-600 hover:text-red-800 transition-colors duration-200 cursor-pointer"
-                      onClick={() => setDeleteAdminId(admin.id)}
-                    >
-                      <Trash2 size={16} />
-                    </button>
-                  </AlertDialogTrigger>
-                  <AlertDialogContent>
-                    <AlertDialogHeader>
-                      <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                      <AlertDialogDescription>
-                        This action cannot be undone. This will permanently delete the admin account
-                        for {admin.name}.
-                      </AlertDialogDescription>
-                    </AlertDialogHeader>
-                    <AlertDialogFooter>
-                      <AlertDialogCancel onClick={() => setDeleteAdminId(null)}>
-                        Cancel
-                      </AlertDialogCancel>
-                      <AlertDialogAction
-                        onClick={confirmDelete}
-                        className="bg-red-600 hover:bg-red-700"
-                      >
-                        Delete
-                      </AlertDialogAction>
-                    </AlertDialogFooter>
-                  </AlertDialogContent>
-                </AlertDialog>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="hidden lg:block">
+      <div className="border border-gray-200 shadow-lg bg-white overflow-hidden rounded-lg">
+        <div className="overflow-x-auto">
+          <table className="w-full">
+            <thead>
+              <tr className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
+                <th className="text-left py-5 px-6 text-sm font-semibold uppercase tracking-wider">
+                  Admin Name
+                </th>
+                <th className="text-left py-5 px-6 text-sm font-semibold uppercase tracking-wider">
+                  Email
+                </th>
+                <th className="text-left py-5 px-6 text-sm font-semibold uppercase tracking-wider">
+                  Admin ID
+                </th>
+                <th className="text-center py-5 px-6 text-sm font-semibold uppercase tracking-wider">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-100">
+              {admins.map((admin, index) => (
+                <tr
+                  key={admin.id}
+                  className={`transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 hover:shadow-md ${
+                    index % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'
+                  }`}
+                >
+                  <td className="py-5 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
+                    {admin.name}
+                  </td>
+                  <td className="py-5 px-6 text-sm text-gray-700 whitespace-nowrap">
+                    {admin.email}
+                  </td>
+                  <td className="py-5 px-6 text-xs text-gray-600 font-mono whitespace-nowrap">
+                    <span className="bg-gray-100 rounded px-2 py-1 inline-block">{admin.id}</span>
+                  </td>
+                  <td className="py-5 px-6 text-center">
+                    <AlertDialog>
+                      <AlertDialogTrigger asChild>
+                        <button
+                          className="text-red-600 hover:text-red-800 transition-colors duration-200"
+                          onClick={() => setDeleteAdminId(admin.id)}
+                          title="Delete admin"
+                        >
+                          <Trash2 size={16} />
+                        </button>
+                      </AlertDialogTrigger>
+                      <AlertDialogContent>
+                        <AlertDialogHeader>
+                          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                          <AlertDialogDescription>
+                            This action cannot be undone. It will permanently delete admin{' '}
+                            <strong>{admin.name}</strong>.
+                          </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                          <AlertDialogCancel onClick={() => setDeleteAdminId(null)}>
+                            Cancel
+                          </AlertDialogCancel>
+                          <AlertDialogAction
+                            onClick={confirmDelete}
+                            className="bg-red-600 hover:bg-red-700"
+                          >
+                            Delete
+                          </AlertDialogAction>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    </AlertDialog>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };

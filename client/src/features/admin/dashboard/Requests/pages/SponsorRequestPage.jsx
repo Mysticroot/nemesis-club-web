@@ -1,5 +1,5 @@
-import DesktopView from '@/features/admin/dashboard/Requests/components/DesktopView';
-import MobileView from '@/features/admin/dashboard/Requests/components/MobileView';
+import RequestDesktopView from '@/features/admin/dashboard/Requests/components/RequestDesktopView';
+import RequestMobileView from '@/features/admin/dashboard/Requests/components/RequestMobileView';
 import EmptySponsorRequestView from '@/features/admin/dashboard/Requests/components/EmptySponsorRequestView';
 import SummaryStats from '@/features/admin/dashboard/Requests/components/SummaryStats';
 
@@ -25,10 +25,16 @@ const SponsorRequestPage = () => {
       </div>
 
       {/* Desktop Table View */}
-      <DesktopView sponsorRequests={sponsorRequests} handleSponsorAction={handleSponsorAction} />
+      <RequestDesktopView
+        sponsorRequests={sponsorRequests}
+        handleSponsorAction={handleSponsorAction}
+      />
 
       {/* Mobile/Tablet Card View */}
-      <MobileView sponsorRequests={sponsorRequests} handleSponsorAction={handleSponsorAction} />
+      <RequestMobileView
+        sponsorRequests={sponsorRequests}
+        handleSponsorAction={handleSponsorAction}
+      />
 
       {/* Summary Stats */}
       <SummaryStats sponsorRequests={sponsorRequests} />

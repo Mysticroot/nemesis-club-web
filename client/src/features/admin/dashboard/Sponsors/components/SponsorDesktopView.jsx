@@ -10,7 +10,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-
 import { formatDate } from '@/lib/formatDate';
 
 const SponsorDesktopView = ({
@@ -23,8 +22,8 @@ const SponsorDesktopView = ({
 }) => {
   return (
     <div className="hidden lg:block">
-      <Card className="border border-gray-200 shadow-lg bg-white overflow-hidden">
-        <CardContent className="p-0">
+      <div className="border border-gray-200 shadow-lg bg-white overflow-hidden rounded-lg">
+        <div className="p-0">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
@@ -38,7 +37,6 @@ const SponsorDesktopView = ({
                   <th className="text-left py-5 px-6 text-sm font-semibold uppercase tracking-wider">
                     Contact Details
                   </th>
-
                   <th className="text-left py-5 px-6 text-sm font-semibold uppercase tracking-wider">
                     Partnership Date
                   </th>
@@ -55,23 +53,17 @@ const SponsorDesktopView = ({
                       index % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'
                     }`}
                   >
-                    <td className="py-6 px-6">
-                      <div className="flex items-center space-x-4">
-                        <div className="min-w-0 flex-1">
-                          <p className="text-sm font-semibold text-gray-900 truncate">
-                            {sponsor.company_name}
-                          </p>
-                        </div>
-                      </div>
+                    <td className="py-4 px-6">
+                      <p className="text-sm font-semibold text-gray-900 truncate">
+                        {sponsor.company_name}
+                      </p>
                     </td>
                     <td className="py-6 px-6">
-                      <div className="flex items-center space-x-3">
+                      <div className="flex items-center space-x-2">
                         <div className="bg-gradient-to-br from-gray-100 to-gray-200 p-2.5 rounded-lg shadow-sm">
                           <User className="h-4 w-4 text-gray-600" />
                         </div>
-                        <div>
-                          <p className="text-sm font-medium text-gray-900">{sponsor.name}</p>
-                        </div>
+                        <p className="text-sm font-medium text-gray-900">{sponsor.name}</p>
                       </div>
                     </td>
                     <td className="py-6 px-6">
@@ -86,7 +78,6 @@ const SponsorDesktopView = ({
                         </div>
                       </div>
                     </td>
-
                     <td className="py-6 px-6">
                       <div className="flex items-center space-x-2">
                         <Calendar className="h-4 w-4 text-blue-500" />
@@ -146,8 +137,8 @@ const SponsorDesktopView = ({
               </tbody>
             </table>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 };

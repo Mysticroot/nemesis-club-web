@@ -2,7 +2,7 @@ import { formatDate } from '@/lib/formatDate';
 import { User, Mail, Phone, Calendar, Check, X, MessageSquare } from 'lucide-react';
 import StatusBadge from './StatusBadge';
 
-const MobileView = ({ sponsorRequests, handleSponsorAction }) => {
+const RequestMobileView = ({ sponsorRequests, handleSponsorAction }) => {
   return (
     <div className="lg:hidden space-y-4">
       {sponsorRequests.map((item) => (
@@ -110,4 +110,4 @@ const MobileView = ({ sponsorRequests, handleSponsorAction }) => {
   );
 };
 
-export default MobileView;
+export default RequestMobileView;

@@ -2,7 +2,7 @@ import { formatDate } from '@/lib/formatDate';
 import { Mail, Phone, Calendar, Check, X } from 'lucide-react';
 import StatusBadge from './StatusBadge';
 
-const DesktopView = ({ sponsorRequests, handleSponsorAction }) => {
+const RequestDesktopView = ({ sponsorRequests, handleSponsorAction }) => {
   return (
     <div className="hidden lg:block">
       <div className="border border-gray-200 shadow-lg bg-white overflow-hidden rounded-lg">
@@ -113,4 +113,4 @@ const DesktopView = ({ sponsorRequests, handleSponsorAction }) => {
   );
 };
 
-export default DesktopView;
+export default RequestDesktopView;
