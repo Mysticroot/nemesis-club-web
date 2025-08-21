@@ -1,14 +1,13 @@
 import { Card, CardContent } from '@/components/ui/card';
-import HeaderSection from '@/features/admin/dashboard/components/HeaderSection';
+
 import { Building } from 'lucide-react';
 
 const EmptySponsorView = () => {
   return (
     <div className="space-y-6 p-4 sm:p-6 lg:p-8">
-      <HeaderSection
-        title="Current Sponsors"
-        subtitle="View and manage your club's approved sponsors"
-      />
+      <div className="text-center mb-8">
+        <h1 className="text-3xl font-bold text-slate-900 mb-2">Current Sponsors</h1>
+      </div>
 
       <Card className="border border-slate-200 shadow-sm bg-white">
         <CardContent className="pt-6">

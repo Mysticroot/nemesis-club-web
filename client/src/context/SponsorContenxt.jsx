@@ -1,11 +1,13 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { fetchSponsorRequests, fetchApprovedSponsors, updateSponsorStatus } from '@/api/sponsorApi';
+import { fetchAllAdmins } from '@/api/adminApi';
 
 const SponsorContext = createContext();
 
 export function SponsorProvider({ children }) {
   const [sponsorRequests, setSponsorRequests] = useState([]);
   const [approvedSponsors, setApprovedSponsors] = useState([]);
+  const [admins, setAdmins] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const loadSponsorRequests = async () => {
@@ -39,9 +41,22 @@ export function SponsorProvider({ children }) {
     }
   };
 
+  const loadAdmins = async () => {
+    try {
+      setLoading(true);
+      const data = await fetchAllAdmins();
+      setAdmins(data);
+    } catch (err) {
+      console.error('Failed to fetch admins');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     loadSponsorRequests();
     loadApprovedSponsors();
+    loadAdmins();
   }, []);
 
   return (
@@ -50,6 +65,8 @@ export function SponsorProvider({ children }) {
         sponsorRequests,
         setSponsorRequests,
         approvedSponsors,
+        admins,
+        setAdmins,
         loading,
         reloadRequests: loadSponsorRequests,
         reloadApproved: loadApprovedSponsors,

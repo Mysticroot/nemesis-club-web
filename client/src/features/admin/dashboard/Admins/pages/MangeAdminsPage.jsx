@@ -2,22 +2,10 @@ import { useEffect, useState } from 'react';
 
 import { fetchAllAdmins, deleteAdmin } from '@/api/adminApi';
 import AdminTable from '@/features/admin/dashboard/Admins/components/AdminTable';
+import { useSponsor } from '@/context/SponsorContenxt';
 
 const ManageAdminsPage = () => {
-  const [admins, setAdmins] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  const loadAdmins = async () => {
-    try {
-      setLoading(true);
-      const data = await fetchAllAdmins();
-      setAdmins(data);
-    } catch (err) {
-      console.error('Error loading admins:', err);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const { admins, setAdmins, loading } = useSponsor();
 
   const handleDeleteAdmin = async (adminId) => {
     try {
@@ -27,10 +15,6 @@ const ManageAdminsPage = () => {
       console.error('Failed to delete admin:', err);
     }
   };
-
-  useEffect(() => {
-    loadAdmins();
-  }, []);
 
   return (
     <div className="space-y-6 p-4 sm:p-6 lg:p-8">
