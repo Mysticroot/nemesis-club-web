@@ -1,5 +1,3 @@
-/* eslint-disable react-refresh/only-export-components */
-
 import { useState, useEffect, createContext, useContext } from 'react';
 
 // Auth Context
