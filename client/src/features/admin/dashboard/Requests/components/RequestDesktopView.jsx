@@ -85,7 +85,7 @@ const RequestDesktopView = ({ sponsorRequests, handleSponsorAction }) => {
                             <button
                               onClick={() => handleSponsorAction(item.id, 'approved')}
                               className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium rounded-lg transition-all duration-200 
-                                         bg-emerald-600 text-white hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+                                         bg-emerald-600 text-white hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 cursor-pointer"
                               title="Approve"
                             >
                               <Check className="h-3 w-3" />
@@ -93,7 +93,7 @@ const RequestDesktopView = ({ sponsorRequests, handleSponsorAction }) => {
                             <button
                               onClick={() => handleSponsorAction(item.id, 'rejected')}
                               className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium rounded-lg transition-all duration-200
-                                         bg-rose-600 text-white hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2"
+                                         bg-rose-600 text-white hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 cursor-pointer"
                               title="Reject"
                             >
                               <X className="h-3 w-3" />

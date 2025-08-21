@@ -55,6 +55,12 @@ const AppSidebar = () => {
       icon: Users,
       description: 'Manage sponsor accounts',
     },
+    {
+      path: '/admin/dashboard/manage-admins',
+      label: 'Manage Admins',
+      icon: Users,
+      description: 'Manage admin accounts',
+    },
   ];
 
   // Function to get navigation link classes

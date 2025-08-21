@@ -24,6 +24,7 @@ import ManageBlogPage from '@/features/admin/dashboard/Blog/pages/ManageBlogPage
 import CurrentSponsorsPage from '@/features/admin/dashboard/Sponsors/pages/CurrentSponsorsPage';
 import CreateBlogPage from '@/features/admin/dashboard/Create-Blog/pages/CreateBlogPage';
 import SponsorRequestPage from '@/features/admin/dashboard/Requests/pages/SponsorRequestPage';
+import ManageAdminsPage from '@/features/admin/dashboard/Admins/pages/MangeAdminsPage';
 
 const AppLayout = () => {
   const location = useLocation();
@@ -34,6 +35,7 @@ const AppLayout = () => {
     '/admin/dashboard/sponsor-requests',
     '/admin/dashboard/sponsors',
     '/admin/dashboard/create-blog',
+    '/admin/dashboard/manage-admins',
   ];
 
   const shouldHideNavbar = hiddenNavbarRoutes.includes(location.pathname);
@@ -65,18 +67,9 @@ const AppLayout = () => {
           <Route path="sponsor-requests" element={<SponsorRequestPage />} />
           <Route path="sponsors" element={<CurrentSponsorsPage />} />
           <Route path="create-blog" element={<CreateBlogPage />} />
+          <Route path="manage-admins" element={<ManageAdminsPage />} />
+          <Route path="create-history" element={<div>Create History Page (Coming soon)</div>} />
         </Route>
-
-        <Route
-          path="/admin/create-history"
-          element={
-            <ProtectedRoute>
-              <AdminLayout>
-                <div className="p-6">Create History Page (Coming soon)</div>
-              </AdminLayout>
-            </ProtectedRoute>
-          }
-        />
       </Routes>
       {!shouldHideNavbar && <Footer />}
     </>

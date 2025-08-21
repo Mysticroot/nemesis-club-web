@@ -1,3 +1,4 @@
+// components/AdminTable.jsx
 import { useState } from 'react';
 import { Trash2 } from 'lucide-react';
 import {
@@ -12,12 +13,12 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 
-const AdminList = ({ admins = [], handleDeleteAdmin }) => {
+const AdminTable = ({ admins, onDelete }) => {
   const [deleteAdminId, setDeleteAdminId] = useState(null);
 
   const confirmDelete = () => {
     if (deleteAdminId) {
-      handleDeleteAdmin(deleteAdminId);
+      onDelete(deleteAdminId);
       setDeleteAdminId(null);
     }
   };
@@ -64,7 +65,7 @@ const AdminList = ({ admins = [], handleDeleteAdmin }) => {
                     <AlertDialog>
                       <AlertDialogTrigger asChild>
                         <button
-                          className="text-red-600 hover:text-red-800 transition-colors duration-200"
+                          className="text-red-600 hover:text-red-800 transition-colors duration-200 cursor-pointer"
                           onClick={() => setDeleteAdminId(admin.id)}
                           title="Delete admin"
                         >
@@ -80,12 +81,15 @@ const AdminList = ({ admins = [], handleDeleteAdmin }) => {
                           </AlertDialogDescription>
                         </AlertDialogHeader>
                         <AlertDialogFooter>
-                          <AlertDialogCancel onClick={() => setDeleteAdminId(null)}>
+                          <AlertDialogCancel
+                            className="cursor-pointer"
+                            onClick={() => setDeleteAdminId(null)}
+                          >
                             Cancel
                           </AlertDialogCancel>
                           <AlertDialogAction
                             onClick={confirmDelete}
-                            className="bg-red-600 hover:bg-red-700"
+                            className="bg-red-600 hover:bg-red-700 cursor-pointer"
                           >
                             Delete
                           </AlertDialogAction>
@@ -103,4 +107,4 @@ const AdminList = ({ admins = [], handleDeleteAdmin }) => {
   );
 };
 
-export default AdminList;
+export default AdminTable;

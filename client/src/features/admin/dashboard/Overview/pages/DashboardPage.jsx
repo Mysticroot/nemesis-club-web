@@ -6,42 +6,12 @@ import QuickActions from '@/features/admin/dashboard/Overview/components/QuickAc
 
 import { useBlogs } from '@/context/BlogContext';
 import { useSponsor } from '@/context/SponsorContenxt';
-import AdminList from '@/features/admin/dashboard/Overview/components/AdminList';
-
-import { deleteAdmin, fetchAllAdmins } from '@/api/adminApi';
 
 const DashboardPage = () => {
   const { blogs, loading } = useBlogs();
   const { sponsorRequests, approvedSponsors, loading: sponsorLoading } = useSponsor();
-  const [admins, setAdmins] = useState([]);
-  const [adminsLoading, setAdminsLoading] = useState(true);
 
-  useEffect(() => {
-    const loadAdmins = async () => {
-      try {
-        setAdminsLoading(true);
-        const data = await fetchAllAdmins();
-        setAdmins(data);
-      } catch (error) {
-        console.error('Failed to fetch admins:', error);
-      } finally {
-        setAdminsLoading(false);
-      }
-    };
-
-    loadAdmins();
-  }, []);
-
-  const handleDeleteAdmin = async (adminId) => {
-    try {
-      await deleteAdmin(adminId);
-      setAdmins((prevAdmins) => prevAdmins.filter((admin) => admin.id !== adminId));
-    } catch (error) {
-      console.error('Failed to delete admin:', error);
-    }
-  };
-
-  if (loading || sponsorLoading || adminsLoading) {
+  if (loading || sponsorLoading) {
     return <div>Loading...</div>;
   }
 
@@ -61,11 +31,6 @@ const DashboardPage = () => {
 
           <div className="grid">
             <QuickActions sponsorRequests={sponsorRequests} />
-          </div>
-
-          <div>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Admin List</h2>
-            <AdminList admins={admins} handleDeleteAdmin={handleDeleteAdmin} />
           </div>
         </div>
       </main>
