@@ -67,3 +67,19 @@ export const fetchApprovedSponsors = async (req, res) => {
     return errorResponse(res, 'Error fetching approved sponsors', 500, err.message);
   }
 };
+
+export const deleteApprovedSponsor = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const result = await pool.query(`DELETE FROM sponsor_requests WHERE id = $1 RETURNING *`, [id]);
+
+    if (result.rowCount === 0) {
+      return errorResponse(res, 'Sponsor not found', 404);
+    }
+
+    return successResponse(res, 'Sponsor deleted successfully', result.rows[0]);
+  } catch (err) {
+    return errorResponse(res, 'Failed to delete sponsor', 500, err.message);
+  }
+};

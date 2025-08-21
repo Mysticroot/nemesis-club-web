@@ -45,3 +45,14 @@ export async function submitSponsorRequest(formData) {
     throw error;
   }
 }
+
+export async function deleteSponsorRequest(id) {
+  try {
+    const { data: resp } = await axios.delete(`/sponsors/requests/${id}`);
+    const result = resp.data;
+    return result;
+  } catch (error) {
+    console.error('Error deleting sponsor request:', error);
+    throw error;
+  }
+}

@@ -1,9 +1,8 @@
 import { updateSponsorStatus } from '@/api/sponsorApi';
 import { useSponsor } from '@/context/SponsorContenxt';
 
-
 export const useSponsorAction = () => {
-  const { setSponsorRequests } = useSponsor();
+  const { setSponsorRequests, reloadApproved } = useSponsor();
 
   const handleSponsorAction = async (id, action) => {
     try {
@@ -16,7 +15,7 @@ export const useSponsorAction = () => {
 
       // Actual backend update
       await updateSponsorStatus(id, action);
-
+      await reloadApproved();
       // Update after successful change
       setSponsorRequests((prev) =>
         prev.map((req) => (req.id === id ? { ...req, status: action, processing: false } : req))

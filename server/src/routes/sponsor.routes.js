@@ -5,6 +5,7 @@ import {
   fetchAllSponsorRequests,
   fetchApprovedSponsors,
   updateSponsorRequestStatus,
+  deleteApprovedSponsor
 } from '../controllers/sponsor.controller.js';
 
 const router = express.Router();
@@ -25,6 +26,8 @@ router.get('/requests/approved', verifyToken, fetchApprovedSponsors);
 // Update sponsor request status (approve/reject)
 // PUT /api/sponsors/requests/:id/status
 router.put('/requests/:id/status', verifyToken, updateSponsorRequestStatus);
+
+router.delete('/requests/:id', verifyToken, deleteApprovedSponsor); // DELETE /api/sponsors/requests/:id
 
 export { router as sponsorRouter };
 /**

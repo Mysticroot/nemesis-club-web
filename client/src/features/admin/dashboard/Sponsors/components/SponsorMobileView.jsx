@@ -13,7 +13,14 @@ import {
 
 import { formatDate } from '@/lib/formatDate';
 
-const SponsorMobileView = ({ sponsors,setSelectedSponsor, onDeleteSponsor }) => {
+const SponsorMobileView = ({
+  sponsors,
+  selectedSponsor,
+  handleDeleteClick,
+  handleDeleteConfirm,
+  deleteDialogOpen,
+  setDeleteDialogOpen,
+}) => {
   return (
     <div className="lg:hidden space-y-4">
       {sponsors.map((sponsor) => (
@@ -34,13 +41,16 @@ const SponsorMobileView = ({ sponsors,setSelectedSponsor, onDeleteSponsor }) => 
                     <p className="text-xs text-slate-500 mt-1">ID: #{sponsor.id.slice(0, 8)}</p>
                   </div>
                 </div>
-                <Dialog>
+                <Dialog
+                  open={deleteDialogOpen && selectedSponsor?.id === sponsor.id}
+                  onOpenChange={setDeleteDialogOpen}
+                >
                   <DialogTrigger asChild>
                     <Button
                       variant="outline"
                       size="sm"
                       className="text-red-600 border-red-200 hover:bg-red-50 hover:border-red-300 transition-all duration-200 shadow-sm"
-                      onClick={() => setSelectedSponsor(sponsor)}
+                      onClick={() => handleDeleteClick(sponsor)}
                     >
                       <Trash2 className="h-4 w-4" />
                     </Button>
@@ -57,12 +67,16 @@ const SponsorMobileView = ({ sponsors,setSelectedSponsor, onDeleteSponsor }) => 
                       </DialogDescription>
                     </DialogHeader>
                     <DialogFooter className="flex gap-2">
-                      <Button variant="outline" className="flex-1">
+                      <Button
+                        variant="outline"
+                        className="flex-1"
+                        onClick={() => setDeleteDialogOpen(false)}
+                      >
                         Cancel
                       </Button>
                       <Button
                         variant="destructive"
-                        onClick={() => onDeleteSponsor?.(sponsor.id)}
+                        onClick={handleDeleteConfirm}
                         className="flex-1"
                       >
                         Remove Sponsor
