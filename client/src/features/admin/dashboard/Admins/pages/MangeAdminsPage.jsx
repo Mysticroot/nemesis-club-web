@@ -33,8 +33,10 @@ const ManageAdminsPage = () => {
   }, []);
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-semibold mb-6">Manage Admins</h1>
+    <div className="space-y-6 p-4 sm:p-6 lg:p-8">
+      <div className="text-center mb-8">
+        <h1 className="text-3xl font-bold text-slate-900 mb-2">Manage Admins</h1>
+      </div>
       {loading ? (
         <p className="text-gray-500">Loading admins...</p>
       ) : (

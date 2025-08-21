@@ -93,7 +93,6 @@ const CreateBlogPage = () => {
         return null;
     }
   };
-
   return (
     <div className="min-h-screen bg-white text-gray-900">
       {/* Background Pattern */}

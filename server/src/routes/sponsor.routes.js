@@ -2,10 +2,10 @@ import express from 'express';
 import verifyToken from '../middlewares/auth.js';
 import {
   createSponsorRequest,
+  deleteApprovedSponsor,
   fetchAllSponsorRequests,
   fetchApprovedSponsors,
   updateSponsorRequestStatus,
-  deleteApprovedSponsor
 } from '../controllers/sponsor.controller.js';
 
 const router = express.Router();
@@ -31,7 +31,6 @@ router.delete('/requests/:id', verifyToken, deleteApprovedSponsor); // DELETE /a
 
 export { router as sponsorRouter };
 /**
- * ==========================
  * 📝 Future Improvements
  * ==========================
  * - Add pagination for sponsor requests

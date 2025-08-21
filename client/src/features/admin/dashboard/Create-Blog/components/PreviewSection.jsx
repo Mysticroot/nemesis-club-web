@@ -1,25 +1,23 @@
 import { Eye, Calendar, User } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-
+import { CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
 const PreviewSection = ({ formData }) => {
   return (
-    <Card className="bg-white border-gray-200 shadow-sm">
-      <CardHeader className="pb-4">
-        <CardTitle className="flex items-center gap-3 text-xl text-gray-900">
-          <Eye className="h-5 w-5 text-gray-700" />
-          Blog Preview
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="border-2 border-dashed border-gray-300 rounded-2xl p-8 bg-gray-50">
-          <article className="prose prose-gray prose-lg max-w-none">
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 leading-tight">
-              {formData.title}
-            </h1>
+    <div className="border border-gray-200 shadow-lg bg-white rounded-xl">
+      <div className="flex items-center gap-3 border-b border-gray-100 bg-gradient-to-r from-indigo-50 to-purple-50 px-6 py-4">
+        <div className="w-10 h-10 bg-indigo-100 rounded-xl flex items-center justify-center">
+          <Eye className="h-5 w-5 text-indigo-700" />
+        </div>
+        <h3 className="text-lg font-semibold text-gray-800">Blog Preview</h3>
+      </div>
 
-            <div className="flex items-center gap-6 text-sm text-gray-600 mb-8 pb-6 border-b border-gray-300">
+      <CardContent className="p-6">
+        <div className="border-2 border-dashed border-gray-300 rounded-2xl p-6 bg-gray-50">
+          <article className="prose prose-gray max-w-none">
+            <h1 className="text-3xl font-bold text-gray-900 mb-4">{formData.title}</h1>
+
+            <div className="flex items-center gap-6 text-sm text-gray-600 mb-6 pb-4 border-b border-gray-300">
               <div className="flex items-center gap-2">
                 <User className="h-4 w-4" />
                 <span className="font-medium">Admin User</span>
@@ -33,13 +31,13 @@ const PreviewSection = ({ formData }) => {
               </Badge>
             </div>
 
-            <div className="text-gray-700 leading-relaxed whitespace-pre-wrap">
+            <div className="text-gray-700 leading-relaxed whitespace-pre-wrap text-base">
               {formData.content || 'Start writing your content to see the preview...'}
             </div>
           </article>
         </div>
       </CardContent>
-    </Card>
+    </div>
   );
 };
 

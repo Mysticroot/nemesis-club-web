@@ -1,16 +1,15 @@
 import { Eye, Calendar, User, Globe, Loader2 } from 'lucide-react';
-
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
 const SideBar = ({ isLoading, showPreview, setShowPreview, handlePublish }) => {
   return (
     <div className="xl:col-span-1 space-y-6">
       {/* Author Information */}
-      <Card className="bg-white border-gray-200 shadow-sm">
-        <CardHeader className="pb-4">
-          <CardTitle className="text-lg text-gray-900">Author Information</CardTitle>
-        </CardHeader>
+      <Card className="bg-white border border-gray-200 shadow-lg rounded-xl">
+        <div className="px-6 py-4 border-b border-gray-100">
+          <h3 className="text-lg font-semibold text-gray-800">Author Information</h3>
+        </div>
         <CardContent>
           <div className="flex items-center gap-4 p-4 rounded-xl bg-gray-50 border border-gray-200">
             <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
@@ -34,7 +33,6 @@ const SideBar = ({ isLoading, showPreview, setShowPreview, handlePublish }) => {
           onClick={() => setShowPreview(!showPreview)}
           variant="outline"
           className="w-full h-12 text-base bg-white border-gray-300 text-gray-900 hover:bg-gray-50 hover:border-gray-400"
-          size="lg"
         >
           <Eye className="h-4 w-4 mr-2" />
           {showPreview ? 'Hide Preview' : 'Preview Blog'}
@@ -43,15 +41,19 @@ const SideBar = ({ isLoading, showPreview, setShowPreview, handlePublish }) => {
         <Button
           onClick={handlePublish}
           disabled={isLoading}
-          className="w-full h-12 text-base bg-gray-900 text-white hover:bg-gray-800 font-medium"
-          size="lg"
+          className="w-full h-12 text-base bg-gray-900 text-white hover:bg-gray-800"
         >
           {isLoading ? (
-            <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+            <>
+              <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+              Publishing...
+            </>
           ) : (
-            <Globe className="h-4 w-4 mr-2" />
+            <>
+              <Globe className="h-4 w-4 mr-2" />
+              Publish Now
+            </>
           )}
-          {isLoading ? 'Publishing...' : 'Publish Now'}
         </Button>
       </div>
     </div>
