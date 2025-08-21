@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
-
-import { fetchAllAdmins, deleteAdmin } from '@/api/adminApi';
+import { deleteAdmin } from '@/api/adminApi';
 import AdminTable from '@/features/admin/dashboard/Admins/components/AdminTable';
 import { useSponsor } from '@/context/SponsorContenxt';
 

@@ -9,9 +9,12 @@ import ContentSection from '@/features/admin/dashboard/Create-Blog/components/Co
 import TitleSection from '@/features/admin/dashboard/Create-Blog/components/TitleSection';
 import SideBar from '@/features/admin/dashboard/Create-Blog/components/SideBar';
 import PreviewSection from '@/features/admin/dashboard/Create-Blog/components/PreviewSection';
-import { createBlog } from '@/api/blogApi';
+import { createBlog, fetchBlogs } from '@/api/blogApi';
+import { useBlogs } from '@/context/BlogContext';
 
 const CreateBlogPage = () => {
+  const { reload } = useBlogs(); //reload blogs in state (refetch)
+
   const [formData, setFormData] = useState({
     title: '',
     content: '',
@@ -62,7 +65,7 @@ const CreateBlogPage = () => {
 
     try {
       const response = await createBlog(formData);
-
+      reload(); // Reload blogs after publishing
       // console.log('Blog data to publish:', response);
       setSaveStatus('published');
     } catch (error) {
