@@ -22,7 +22,7 @@ import {
 import { useState } from 'react';
 import HeaderSection from '@/features/admin/dashboard/components/HeaderSection';
 
-const SponsorsList = ({ approvedSponsors, onDeleteSponsor }) => {
+const CurrentSponsorList = ({ approvedSponsors, onDeleteSponsor }) => {
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [selectedSponsor, setSelectedSponsor] = useState(null);
 
@@ -78,10 +78,10 @@ const SponsorsList = ({ approvedSponsors, onDeleteSponsor }) => {
 
   return (
     <div className="space-y-6 p-4 sm:p-6 lg:p-8">
-      <HeaderSection
-        title="Current Sponsors"
-        subtitle={`Managing ${sponsors.length} active sponsor${sponsors.length !== 1 ? 's' : ''} for your club`}
-      />
+      {/* Header Section */}
+      <div className="text-center mb-8">
+        <h1 className="text-3xl font-bold text-slate-900 mb-2">Current Sponsors</h1>
+      </div>
 
       {/* Desktop Table View */}
       <div className="hidden lg:block">
@@ -345,4 +345,4 @@ const SponsorsList = ({ approvedSponsors, onDeleteSponsor }) => {
   );
 };
 
-export default SponsorsList;
+export default CurrentSponsorList;

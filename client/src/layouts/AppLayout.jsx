@@ -21,9 +21,9 @@ import RegisterPage from '@/features/admin/auth/pages/RegisterPage';
 import DashboardPage from '@/features/admin/dashboard/Overview/pages/DashboardPage';
 import ManageBlogPage from '@/features/admin/dashboard/Blog/pages/ManageBlogPage';
 
-import SponsorRequestsListPage from '@/features/admin/dashboard/Sponsors/pages/SponsorRequestsListPage';
-import SponsorsListPage from '@/features/admin/dashboard/Sponsors/pages/SponsorsListPage';
+import CurrentSponsorsPage from '@/features/admin/dashboard/Sponsors/pages/CurrentSponsorsPage';
 import CreateBlogPage from '@/features/admin/dashboard/Create-Blog/pages/CreateBlogPage';
+import SponsorRequestPage from '@/features/admin/dashboard/Requests/pages/SponsorRequestsListPage';
 
 const AppLayout = () => {
   const location = useLocation();
@@ -62,8 +62,8 @@ const AppLayout = () => {
         >
           <Route index element={<DashboardPage />} />
           <Route path="manage-blogs" element={<ManageBlogPage />} />
-          <Route path="sponsor-requests" element={<SponsorRequestsListPage />} />
-          <Route path="sponsors" element={<SponsorsListPage />} />
+          <Route path="sponsor-requests" element={<SponsorRequestPage />} />
+          <Route path="sponsors" element={<CurrentSponsorsPage />} />
           <Route path="create-blog" element={<CreateBlogPage />} />
         </Route>
 

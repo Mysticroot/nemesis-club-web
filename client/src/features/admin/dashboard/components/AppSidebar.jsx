@@ -22,7 +22,6 @@ import { useAuth } from '@/context/AuthContext';
 const AppSidebar = () => {
   const { logout, adminData } = useAuth();
   const location = useLocation();
-  // const isOnDashboardIndex = location.pathname === '/admin/dashboard';
 
   // Main navigation items
   const mainNavItems = [
@@ -39,6 +38,12 @@ const AppSidebar = () => {
       description: 'Manage blog content and posts',
     },
     {
+      path: '/admin/dashboard/create-blog',
+      label: 'Create Blog Post',
+      icon: Users,
+      description: 'Create a new blog post',
+    },
+    {
       path: '/admin/dashboard/sponsor-requests',
       label: 'Sponsor Requests',
       icon: HandHeart,
@@ -49,12 +54,6 @@ const AppSidebar = () => {
       label: 'Sponsors',
       icon: Users,
       description: 'Manage sponsor accounts',
-    },
-    {
-      path: '/admin/dashboard/create-blog',
-      label: 'Create Blog Post',
-      icon: Users,
-      description: 'Create a new blog post',
     },
   ];
 
