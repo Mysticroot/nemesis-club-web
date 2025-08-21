@@ -23,6 +23,7 @@ import ManageBlogPage from '@/features/admin/dashboard/Blog/pages/ManageBlogPage
 
 import SponsorRequestsListPage from '@/features/admin/dashboard/Sponsors/pages/SponsorRequestsListPage';
 import SponsorsListPage from '@/features/admin/dashboard/Sponsors/pages/SponsorsListPage';
+import CreateBlogPage from '@/features/admin/dashboard/Create-Blog/pages/CreateBlogPage';
 
 const AppLayout = () => {
   const location = useLocation();
@@ -63,7 +64,7 @@ const AppLayout = () => {
           <Route path="manage-blogs" element={<ManageBlogPage />} />
           <Route path="sponsor-requests" element={<SponsorRequestsListPage />} />
           <Route path="sponsors" element={<SponsorsListPage />} />
-          <Route path="create-blog" element={<h1>Coming Soon!</h1>} />
+          <Route path="create-blog" element={<CreateBlogPage />} />
         </Route>
 
         <Route
