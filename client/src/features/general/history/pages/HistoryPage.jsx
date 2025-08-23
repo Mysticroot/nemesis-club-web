@@ -27,7 +27,7 @@ export default function History() {
 
       {/* Timeline Cards */}
       <div className="space-y-12">
-        {historyData.map((item, idx) => (
+        {historyData?.map((item, idx) => (
           <motion.div
             key={idx}
             initial={{ opacity: 0, y: 40 }}
