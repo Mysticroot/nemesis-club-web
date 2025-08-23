@@ -2,8 +2,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useBlogs } from '@/context/BlogContext';
 
 export default function BlogSection() {
+  const { blogs } = useBlogs();
+
+  // Take latest 3 blogs (assuming `created_at` exists in DB)
+  const latestBlogs = blogs
+    ?.sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+    .slice(0, 3);
+
   const sections = [
     {
       title: 'Engineering the Future',
@@ -32,49 +40,11 @@ export default function BlogSection() {
       ],
       image: 'https://images.unsplash.com/photo-1502877338535-766e1452684a?w=800&h=600&fit=crop',
     },
-    {
-      title: 'Shaping Tomorrow',
-      text: `Our focus isn't just today—it's about preparing for the future. We actively invest
-        in research, sustainable solutions, and empowering young engineers to take the lead.`,
-      subText: `Through collaboration, knowledge-sharing, and real-world problem solving, we are
-        building a legacy of innovation and impact for the generations to come.`,
-      stats: [
-        { value: '100+', label: 'Students Trained' },
-        { value: '30+', label: 'Industry Collaborations' },
-      ],
-      image:
-        'https://images.unsplash.com/photo-1526716173434-a1d1b1b1b1b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    },
   ];
 
   return (
     <section className="py-16 sm:py-20 bg-[#0E0E0E] relative overflow-hidden">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-12 sm:mb-16 px-4 sm:px-6 max-w-7xl mx-auto gap-6">
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-3xl sm:text-4xl font-extrabold uppercase tracking-widest 
-                     text-transparent bg-clip-text 
-                     bg-gradient-to-r from-[#1A73E8] via-[#3DF5FF] to-[#1A73E8]"
-        >
-          Latest from Our Blog
-        </motion.h2>
-
-        <Link
-          to="/blogs"
-          className="px-6 py-3 font-bold uppercase tracking-wide
-           bg-gradient-to-r from-[#1A73E8] via-[#3DF5FF] to-[#1A73E8]
-           text-black shadow-lg shadow-[#1A73E8]/40
-           hover:scale-105 transform transition-all duration-300"
-        >
-          View All
-        </Link>
-      </div>
-
-      {/* Alternating Sections */}
+      {/* First 2 Alternating Sections */}
       <div className="space-y-20 sm:space-y-28">
         {sections.map((sec, idx) => (
           <motion.div
@@ -90,10 +60,10 @@ export default function BlogSection() {
             {/* Text */}
             <div className={`${idx % 2 === 1 ? 'md:col-start-2' : ''} order-2 md:order-1`}>
               <h3
-                className="text-2xl sm:text-3xl font-bold text-white uppercase tracking-wide 
-             mb-6 italic -skew-x-6"
+                className="text-2xl sm:text-3xl font-bold uppercase tracking-wide 
+                mb-6 italic -skew-x-6 text-transparent bg-clip-text
+                bg-gradient-to-r from-[#1A73E8] via-[#3DF5FF] to-[#1A73E8]"
               >
-                {' '}
                 {sec.title}
               </h3>
               <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-4">{sec.text}</p>
@@ -137,6 +107,64 @@ export default function BlogSection() {
             </div>
           </motion.div>
         ))}
+
+        {/* 3rd Section → Dynamic Blogs */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="max-w-7xl mx-auto px-4 sm:px-6"
+        >
+          {/* Heading + Button Row */}
+          <div className="flex items-center justify-between mb-10">
+            <h3
+              className="text-2xl sm:text-3xl font-bold uppercase tracking-wide italic -skew-x-6 
+              text-transparent bg-clip-text bg-gradient-to-r from-[#1A73E8] via-[#3DF5FF] to-[#1A73E8]"
+            >
+              Latest Blogs
+            </h3>
+            <Link
+              to="/blogs"
+              className="px-6 py-2 font-bold uppercase tracking-wide
+              bg-gradient-to-r from-[#1A73E8] via-[#3DF5FF] to-[#1A73E8]
+              text-black shadow-lg shadow-[#1A73E8]/40
+              hover:scale-105 transform transition-all duration-300
+              rounded-none"
+            >
+              View All
+            </Link>
+          </div>
+
+          {/* Blog Cards */}
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {latestBlogs?.map((blog) => (
+              <motion.div
+                key={blog.id}
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: 'spring', stiffness: 200 }}
+                className="bg-[#111111] rounded-2xl shadow-lg overflow-hidden border border-[#1A73E8]/30"
+              >
+                <img src={blog.cover_image} alt={blog.title} className="h-48 w-full object-cover" />
+                <div className="p-6">
+                  <h4
+                    className="text-lg font-bold mb-3 text-transparent bg-clip-text 
+                    bg-gradient-to-r from-[#1A73E8] via-[#3DF5FF] to-[#1A73E8]"
+                  >
+                    {blog.title}
+                  </h4>
+                  <p className="text-gray-400 text-sm mb-4 line-clamp-3">{blog.content}</p>
+                  <Link
+                    to={`/blogs/${blog.id}`}
+                    className="text-[#3DF5FF] font-semibold hover:underline"
+                  >
+                    Read More →
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

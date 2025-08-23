@@ -2,55 +2,48 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useBlogs } from '@/context/BlogContext';
 
-const blogs = [
-  {
-    id: 1,
-    date: '12 JUL',
-    category: 'WEC',
-    title: 'THE 499PS IN ACTION IN SÃO PAULO',
-    image: 'https://www.ferrari.com/images/2024/07/12/499p-wec-saopaulo.jpg',
-  },
-  {
-    id: 2,
-    date: '09 JUL',
-    category: 'WEC',
-    title: 'COMMENTS IN THE RUN-UP TO THE 6 HOURS OF SÃO PAULO',
-    image: 'https://www.ferrari.com/images/2024/07/09/499p-team-photo.jpg',
-  },
-  {
-    id: 3,
-    date: '08 JUL',
-    category: 'HYPERCAR',
-    title: 'GIOVINAZZI RENEWS HIS CONTRACT WITH FERRARI',
-    image: 'https://www.ferrari.com/images/2024/07/08/giovinazzi.jpg',
-  },
-  // Add more blogs here...
-];
 
 export default function Blogs() {
+  const { blogs } = useBlogs();
+
   return (
     <div className="bg-[#0A1F44] min-h-screen py-12 px-6 md:px-16 text-white pt-32">
-      {/* Heading */}
-      <motion.h1
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="relative block w-fit mx-auto 
-             text-4xl md:text-5xl font-extrabold mb-18 uppercase 
-             text-transparent bg-clip-text 
-             bg-gradient-to-r from-[#1A73E8] via-[#3DF5FF] to-[#1A73E8]
-             tracking-wide italic transform -skew-x-6 text-center"
-      >
-        Latest Blogs
-        {/* Racing stripe underline */}
-        <span
-          className="absolute left-1/2 -translate-x-1/2 bottom-[-10px] 
-               w-3/4 h-[4px] 
-               bg-gradient-to-r from-[#1A73E8] via-[#3DF5FF] to-[#1A73E8] 
-               skew-x-12 rounded-full"
-        ></span>
-      </motion.h1>
+      {/* Heading + Button */}
+      <div className="flex justify-between items-center mb-16">
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="relative inline-block 
+               text-4xl md:text-5xl font-extrabold uppercase 
+               text-transparent bg-clip-text 
+               bg-gradient-to-r from-[#1A73E8] via-[#3DF5FF] to-[#1A73E8]
+               tracking-wide italic transform -skew-x-6"
+        >
+          Latest Blogs
+          <span
+            className="absolute left-0 bottom-[-10px] 
+                 w-full h-[4px] 
+                 bg-gradient-to-r from-[#1A73E8] via-[#3DF5FF] to-[#1A73E8] 
+                 skew-x-12 rounded-full"
+          ></span>
+        </motion.h1>
+
+        {/* View All Button */}
+        <Link
+          to="/blogs/all"
+          className="px-6 py-2 text-sm md:text-base font-bold uppercase
+                     bg-gradient-to-r from-[#1A73E8] to-[#3DF5FF]
+                     text-white shadow-lg 
+                     hover:from-[#D72638] hover:to-[#FF5C00] 
+                     transition-all duration-300 
+                     rounded-none"
+        >
+          View All
+        </Link>
+      </div>
 
       {/* Blog Cards */}
       <div className="grid md:grid-cols-3 gap-8">

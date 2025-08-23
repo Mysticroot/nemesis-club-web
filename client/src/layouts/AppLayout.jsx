@@ -11,6 +11,7 @@ import AdminLayout from '@/layouts/AdminLayout';
 import Home from '@/features/general/home/pages/HomePage';
 import Blogs from '@/features/general/blog/pages/BlogPage';
 import About from '@/features/general/about/pages/AboutPage';
+import Sponsor from '@/features/general/sponsor/Sponsor';
 import History from '@/features/general/history/pages/HistoryPage';
 import Contact from '@/features/general/contact/pages/ContactPage';
 import BlogDetails from '@/features/general/blog/pages/DetailBlogPage';
@@ -50,6 +51,7 @@ const AppLayout = () => {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/history" element={<History />} />
+        <Route path="/sponsor" element={<Sponsor />} />
         <Route path="/admin/login" element={<LoginPage />} />
         <Route path="/admin/register" element={<RegisterPage />} />
 
