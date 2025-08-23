@@ -46,13 +46,21 @@ const Navbar = () => {
     setIsOpen(false);
   };
 
-  const navItems = ['Home', 'Blogs', 'History', 'About', 'Contact'];
+  const navItems = ['Home', 'Blogs', 'Achievements', 'About', 'Contact'];
+
+  // Decide background based on page & scroll
+  const isHomePage = location.pathname === '/' || location.pathname === '/home';
+  const navbarBg = isHomePage
+    ? isAtTop
+      ? 'bg-transparent'
+      : 'bg-[#0A0A0A] shadow-md'
+    : 'bg-[#0A0A0A] shadow-md';
 
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
         showNavbar ? 'translate-y-0' : '-translate-y-full'
-      } ${isAtTop ? 'bg-transparent' : 'bg-[#0A0A0A]/95 backdrop-blur-sm'}`}
+      } ${navbarBg}`}
     >
       <div className="px-6 lg:px-12 py-3 flex items-center justify-between">
         {/* Logo */}
@@ -118,7 +126,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="fixed top-0 right-0 w-3/4 h-screen bg-[#0A0A0A]/95 backdrop-blur-sm shadow-lg z-50 flex flex-col">
+        <div className="fixed top-0 right-0 w-3/4 h-screen bg-[#0A0A0A] shadow-lg z-50 flex flex-col">
           <div className="flex justify-end p-4">
             <button className="text-white" onClick={() => setIsOpen(false)}>
               <X size={28} />

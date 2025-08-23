@@ -29,7 +29,7 @@ export default function HistorySection() {
                        text-black shadow-lg shadow-[#1A73E8]/40
                        hover:scale-105 transform transition-all duration-300"
           >
-            TEAM HISTORY
+            ACHIEVEMENTS
           </Link>
         </div>
 

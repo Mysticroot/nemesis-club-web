@@ -21,7 +21,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Logo & About + Follow Us */}
           <div className="space-y-6">
-            <img src="/images/logo.png" alt="Nemesis Racing" className="h-16" />
+            <img src="/logo.png" alt="Nemesis Racing" className="h-16" />
             <p className="text-sm leading-relaxed">
               Nemesis Racing is a competitive racing team dedicated to pushing the limits of
               performance, engineering, and teamwork. Passion drives us forward.
@@ -91,7 +91,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link to="/history" className="hover:text-white transition">
-                  History
+                  Achievements
                 </Link>
               </li>
               <li>
