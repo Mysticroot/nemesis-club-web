@@ -1,6 +1,8 @@
 // src/components/home/HistorySection.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
+import his1 from '/his1.jpg';
+import his2 from '/his2.jpg';
 
 export default function HistorySection() {
   return (
@@ -20,7 +22,6 @@ export default function HistorySection() {
             our engineering skill, teamwork, and relentless drive to push the limits.
           </p>
 
-          {/* CTA Button with Nemesis Gradient */}
           <Link
             to="/history"
             className="inline-block px-6 py-3 font-bold uppercase tracking-wide
@@ -32,22 +33,27 @@ export default function HistorySection() {
           </Link>
         </div>
 
-        {/* Right Images */}
-        <div className="md:w-1/2 flex justify-center relative group">
-          <img
-            src="/images/mbr34-1.jpg"
-            alt="MBR34 Side View"
-            className="w-80 h-56 object-cover shadow-lg transform rotate-[-3deg] relative z-10 
-                       transition-all duration-500 group-hover:scale-105 group-hover:-translate-x-6 
-                       group-hover:shadow-[0_0_25px_rgba(26,115,232,0.6)]"
-          />
-          <img
-            src="/images/mbr34-2.jpg"
-            alt="MBR34 Action Shot"
-            className="w-80 h-56 object-cover shadow-lg absolute top-10 left-10 transform rotate-[3deg] 
-                       transition-all duration-500 group-hover:scale-105 group-hover:translate-x-6 
-                       group-hover:shadow-[0_0_25px_rgba(215,38,56,0.6)]"
-          />
+        {/* Right Images in Polaroid Style */}
+        <div className="md:w-1/2 flex justify-center items-center relative group">
+          {/* First Frame */}
+          <div
+            className="bg-white shadow-xl p-2 rounded-md w-64 h-72 transform -rotate-3 z-20 
+                       transition-all duration-500 group-hover:-translate-x-6 group-hover:-rotate-6"
+          >
+            <img src={his1} alt="MBR34 Side View" className="w-full h-full object-cover rounded" />
+          </div>
+
+          {/* Second Frame */}
+          <div
+            className="bg-white shadow-xl p-2 rounded-md w-64 h-72 transform rotate-3 -ml-10 z-10 
+                       transition-all duration-500 group-hover:translate-x-6 group-hover:rotate-6"
+          >
+            <img
+              src={his2}
+              alt="MBR34 Action Shot"
+              className="w-full h-full object-cover rounded"
+            />
+          </div>
         </div>
       </div>
     </section>

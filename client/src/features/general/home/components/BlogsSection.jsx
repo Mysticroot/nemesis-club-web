@@ -3,6 +3,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useBlogs } from '@/context/BlogContext';
+import race22 from '/race22.jpg';
+import whatwedo from '/whatwedo.jpg';
 
 export default function BlogSection() {
   const { blogs } = useBlogs();
@@ -14,31 +16,36 @@ export default function BlogSection() {
 
   const sections = [
     {
-      title: 'Engineering the Future',
-      text: `Our team combines years of mechanical engineering expertise with cutting-edge technology
-        to create innovative solutions. From conceptual design to final implementation, we
-        deliver excellence in every project.`,
-      subText: `Specializing in buggy design, mechanical systems, and advanced engineering solutions,
-        we've established ourselves as leaders in the field through consistent innovation and
-        technical excellence.`,
+      title: 'Who Are We?',
+      text: `We are Nemesis Racing — a passionate team of engineering minds carrying forward a legacy of 
+    innovation, determination, and teamwork. What started as a small group of enthusiasts has grown 
+    into a family of engineers united by the drive to design, build, and race with purpose.`,
+      subText: `Our journey is more than just machines and competitions — it’s about pushing boundaries, 
+    learning through challenges, and leaving behind a mark of excellence for future innovators. 
+    Every project we take on is a step towards carrying our legacy forward while inspiring those 
+    who come after us.`,
       stats: [
-        { value: '50+', label: 'Projects Completed' },
-        { value: '15+', label: 'Team Members' },
+        { value: '15+', label: 'Years of Legacy' },
+        { value: '35+', label: 'Dedicated Engineers' },
       ],
-      image: 'https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=800&h=600&fit=crop',
+      image: race22,
     },
     {
-      title: 'Innovation at Every Step',
-      text: `We believe innovation starts from day one. By combining creativity with practical
-        engineering, we ensure that our designs are not just concepts but realities that make
-        a difference.`,
-      subText: `From prototyping to testing, every step is carefully measured to push the limits
-        of what's possible in mechanical engineering and racing technology.`,
-      stats: [
-        { value: '20+', label: 'Awards Won' },
-        { value: '10+', label: 'Years Experience' },
-      ],
-      image: 'https://images.unsplash.com/photo-1502877338535-766e1452684a?w=800&h=600&fit=crop',
+      
+  title: 'What We Do?',
+  text: `At Nemesis Racing, we turn passion into performance. Our work is not just about building 
+    buggies — it’s about creating machines that embody innovation, teamwork, and resilience. 
+    Every design is a reflection of our spirit to engineer beyond limits.`,
+  subText: `From sketching the first idea to racing on the track, we handle every stage with precision 
+    and dedication. Through prototyping, testing, and continuous improvement, we push boundaries 
+    to carry forward a legacy of engineering excellence in motorsport.`,
+  stats: [
+    { value: '20+', label: 'Awards & Recognitions' },
+    { value: '1000+', label: 'Hours of Engineering & Testing' },
+  ],
+  image: whatwedo,
+
+
     },
   ];
 

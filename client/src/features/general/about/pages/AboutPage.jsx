@@ -36,7 +36,7 @@ export default function AboutUs() {
       {/* Hero Section */}
       <div className="relative h-80 md:h-96 overflow-hidden">
         <img
-          src="/images/buggy-hero.jpg"
+          src="/about.jpg"
           alt="Mechathon Buggy Competition"
           className="w-full h-full object-cover"
         />

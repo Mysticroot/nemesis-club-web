@@ -5,11 +5,11 @@ import { motion } from 'framer-motion';
 
 export default function Footer() {
   const socials = [
-    { Component: FaInstagram, link: 'https://instagram.com' },
+    { Component: FaInstagram, link: 'https://www.instagram.com/nemesis.racing/?hl=en' },
     { Component: FaFacebookF, link: 'https://facebook.com' },
     { Component: FaTwitter, link: 'https://twitter.com' },
     { Component: FaLinkedinIn, link: 'https://linkedin.com' },
-    { Component: FaYoutube, link: 'https://youtube.com' },
+    { Component: FaYoutube, link: 'https://www.youtube.com/@teamnemesisracing' },
   ];
 
   return (
@@ -61,7 +61,7 @@ export default function Footer() {
                 Nemesis Racing HQ, Pune, India
               </li>
               <li>
-                <span className="font-semibold text-white">Phone:</span> +91 98765 43210
+                <span className="font-semibold text-white">Phone:</span> +91 98765 XXXXX
               </li>
               <li>
                 <span className="font-semibold text-white">Email:</span>{' '}
