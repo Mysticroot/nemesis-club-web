@@ -1,5 +1,3 @@
-// src/components/home/HistorySection.jsx
-import React from 'react';
 import { Link } from 'react-router-dom';
 import his1 from '/his1.jpg';
 import his2 from '/his2.jpg';

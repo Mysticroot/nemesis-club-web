@@ -1,15 +1,14 @@
-// src/components/home/BlogSection.jsx
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useBlogs } from '@/context/BlogContext';
+
 import race22 from '/race22.jpg';
 import whatwedo from '/whatwedo.jpg';
+
 
 export default function BlogSection() {
   const { blogs } = useBlogs();
 
-  // Take latest 3 blogs (assuming `created_at` exists in DB)
   const latestBlogs = blogs
     ?.sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
     .slice(0, 3);
@@ -48,6 +47,8 @@ export default function BlogSection() {
 
     },
   ];
+
+
 
   return (
     <section className="py-16 sm:py-20 bg-[#0E0E0E] relative overflow-hidden">

@@ -1,5 +1,3 @@
-// src/pages/AboutUs.jsx
-import React from 'react';
 import { Users, Lightbulb, Leaf, Trophy } from 'lucide-react'; // icons
 import { motion } from 'framer-motion';
 

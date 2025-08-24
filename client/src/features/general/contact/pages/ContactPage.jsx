@@ -1,5 +1,4 @@
-// src/pages/ContactUs.jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { motion } from 'framer-motion';
 
