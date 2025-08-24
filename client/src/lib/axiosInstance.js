@@ -1,8 +1,10 @@
 import axios from 'axios';
 
 // Create instance
+const devUrl = 'http://localhost:8080/api';
+const prodUrl = 'https://nemesis-club-web.onrender.com/api';
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:8080/api', // ✅ Your backend base URL
+  baseURL: prodUrl, // ✅ Your backend base URL
   headers: {
     'Content-Type': 'application/json',
   },
@@ -19,6 +21,5 @@ axiosInstance.interceptors.request.use(
   },
   (error) => Promise.reject(error)
 );
-
 
 export default axiosInstance;
