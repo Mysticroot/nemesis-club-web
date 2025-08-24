@@ -30,11 +30,13 @@ export default function AboutUs() {
   ];
 
   return (
-    <div className="bg-[#0E0E0E] min-h-screen text-white">
+    <div className="bg-[#0E0E0E] min-h-screen text-white pt-16">
+      {' '}
+      {/* 👈 Added pt-16 */}
       {/* Hero Section */}
       <div className="relative h-80 md:h-96 overflow-hidden">
         <img
-          src="/images/buggy-hero.jpg"
+          src="/about.jpg"
           alt="Mechathon Buggy Competition"
           className="w-full h-full object-cover"
         />
@@ -60,7 +62,6 @@ export default function AboutUs() {
           </motion.h1>
         </div>
       </div>
-
       {/* Introduction */}
       <div className="max-w-4xl mx-auto px-6 py-16 text-center">
         <motion.h2
@@ -78,7 +79,6 @@ export default function AboutUs() {
           and teamwork, we shape the engineers of tomorrow.
         </p>
       </div>
-
       {/* Mission & Vision */}
       <div className="bg-gradient-to-br from-[#0A1F44]/90 to-[#2A2D34]/80 py-16 px-6 md:px-12 shadow-inner">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 text-center md:text-left">
@@ -108,7 +108,6 @@ export default function AboutUs() {
           </motion.div>
         </div>
       </div>
-
       {/* Pillars */}
       <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {pillars.map((pillar, idx) => (
@@ -127,7 +126,6 @@ export default function AboutUs() {
           </motion.div>
         ))}
       </div>
-
       {/* Commitment */}
       <div className="max-w-4xl mx-auto px-6 py-16 text-center">
         <motion.h2

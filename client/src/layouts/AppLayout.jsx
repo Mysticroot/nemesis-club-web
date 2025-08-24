@@ -50,7 +50,7 @@ const AppLayout = () => {
         <Route path="/blogs/:id" element={<BlogDetails />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/history" element={<History />} />
+        <Route path="/achievements" element={<History />} />
         <Route path="/sponsor" element={<Sponsor />} />
         <Route path="/admin/login" element={<LoginPage />} />
         <Route path="/admin/register" element={<RegisterPage />} />

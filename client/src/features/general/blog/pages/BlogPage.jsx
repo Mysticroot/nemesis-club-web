@@ -2,45 +2,31 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useBlogs } from '@/context/BlogContext';
 
-
 export default function Blogs() {
   const { blogs } = useBlogs();
 
   return (
     <div className="bg-[#0A1F44] min-h-screen py-12 px-6 md:px-16 text-white pt-32">
-      {/* Heading + Button */}
-      <div className="flex justify-between items-center mb-16">
+      {/* Centered Heading */}
+      <div className="mb-16 flex justify-center">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="relative inline-block 
-               text-4xl md:text-5xl font-extrabold uppercase 
-               text-transparent bg-clip-text 
-               bg-gradient-to-r from-[#1A73E8] via-[#3DF5FF] to-[#1A73E8]
-               tracking-wide italic transform -skew-x-6"
+                     text-4xl md:text-5xl font-extrabold uppercase 
+                     text-transparent bg-clip-text 
+                     bg-gradient-to-r from-[#1A73E8] via-[#3DF5FF] to-[#1A73E8]
+                     tracking-wide italic transform -skew-x-6 text-center"
         >
           Latest Blogs
           <span
             className="absolute left-0 bottom-[-10px] 
-                 w-full h-[4px] 
-                 bg-gradient-to-r from-[#1A73E8] via-[#3DF5FF] to-[#1A73E8] 
-                 skew-x-12 rounded-full"
+                       w-full h-[4px] 
+                       bg-gradient-to-r from-[#1A73E8] via-[#3DF5FF] to-[#1A73E8] 
+                       skew-x-12 rounded-full"
           ></span>
         </motion.h1>
-
-        {/* View All Button */}
-        <Link
-          to="/blogs/all"
-          className="px-6 py-2 text-sm md:text-base font-bold uppercase
-                     bg-gradient-to-r from-[#1A73E8] to-[#3DF5FF]
-                     text-white shadow-lg 
-                     hover:from-[#D72638] hover:to-[#FF5C00] 
-                     transition-all duration-300 
-                     rounded-none"
-        >
-          View All
-        </Link>
       </div>
 
       {/* Blog Cards */}
@@ -66,7 +52,7 @@ export default function Blogs() {
                 />
                 <div
                   className="absolute top-2 left-2 bg-gradient-to-r from-[#D72638] to-[#FF5C00] 
-                                text-white text-xs font-bold px-3 py-1 rounded-xl shadow-md"
+                              text-white text-xs font-bold px-3 py-1 rounded-xl shadow-md"
                 >
                   {blog.date}
                 </div>

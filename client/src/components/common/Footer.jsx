@@ -5,11 +5,11 @@ import { motion } from 'framer-motion';
 
 export default function Footer() {
   const socials = [
-    { Component: FaInstagram, link: 'https://instagram.com' },
+    { Component: FaInstagram, link: 'https://www.instagram.com/nemesis.racing/?hl=en' },
     { Component: FaFacebookF, link: 'https://facebook.com' },
     { Component: FaTwitter, link: 'https://twitter.com' },
     { Component: FaLinkedinIn, link: 'https://linkedin.com' },
-    { Component: FaYoutube, link: 'https://youtube.com' },
+    { Component: FaYoutube, link: 'https://www.youtube.com/@teamnemesisracing' },
   ];
 
   return (
@@ -21,7 +21,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Logo & About + Follow Us */}
           <div className="space-y-6">
-            <img src="/images/logo.png" alt="Nemesis Racing" className="h-16" />
+            <img src="/logo.png" alt="Nemesis Racing" className="h-16" />
             <p className="text-sm leading-relaxed">
               Nemesis Racing is a competitive racing team dedicated to pushing the limits of
               performance, engineering, and teamwork. Passion drives us forward.
@@ -61,7 +61,7 @@ export default function Footer() {
                 Nemesis Racing HQ, Pune, India
               </li>
               <li>
-                <span className="font-semibold text-white">Phone:</span> +91 98765 43210
+                <span className="font-semibold text-white">Phone:</span> +91 98765 XXXXX
               </li>
               <li>
                 <span className="font-semibold text-white">Email:</span>{' '}
@@ -91,7 +91,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link to="/history" className="hover:text-white transition">
-                  History
+                  Achievements
                 </Link>
               </li>
               <li>

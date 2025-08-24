@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useBlogs } from '@/context/BlogContext';
-import { sections } from '@/api/sections';
+
+import race22 from '/race22.jpg';
+import whatwedo from '/whatwedo.jpg';
+
 
 export default function BlogSection() {
   const { blogs } = useBlogs();
@@ -9,6 +12,41 @@ export default function BlogSection() {
   const latestBlogs = blogs
     ?.sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
     .slice(0, 3);
+
+  const sections = [
+    {
+      title: 'Who Are We?',
+      text: `We are Nemesis Racing — a passionate team of engineering minds carrying forward a legacy of 
+    innovation, determination, and teamwork. What started as a small group of enthusiasts has grown 
+    into a family of engineers united by the drive to design, build, and race with purpose.`,
+      subText: `Our journey is more than just machines and competitions — it’s about pushing boundaries, 
+    learning through challenges, and leaving behind a mark of excellence for future innovators. 
+    Every project we take on is a step towards carrying our legacy forward while inspiring those 
+    who come after us.`,
+      stats: [
+        { value: '15+', label: 'Years of Legacy' },
+        { value: '35+', label: 'Dedicated Engineers' },
+      ],
+      image: race22,
+    },
+    {
+      
+  title: 'What We Do?',
+  text: `At Nemesis Racing, we turn passion into performance. Our work is not just about building 
+    buggies — it’s about creating machines that embody innovation, teamwork, and resilience. 
+    Every design is a reflection of our spirit to engineer beyond limits.`,
+  subText: `From sketching the first idea to racing on the track, we handle every stage with precision 
+    and dedication. Through prototyping, testing, and continuous improvement, we push boundaries 
+    to carry forward a legacy of engineering excellence in motorsport.`,
+  stats: [
+    { value: '20+', label: 'Awards & Recognitions' },
+    { value: '1000+', label: 'Hours of Engineering & Testing' },
+  ],
+  image: whatwedo,
+
+
+    },
+  ];
 
 
 
