@@ -1,8 +1,11 @@
-import { deleteAdmin } from '@/api/adminApi';
+import { Users } from 'lucide-react';
+
+import PageHeader from '@/features/admin/dashboard/components/PageHeader';
 import AdminTable from '@/features/admin/dashboard/Admins/components/AdminTable';
 import AdminMobileTable from '@/features/admin/dashboard/Admins/components/MobileAdminTable';
 
 import { useSponsor } from '@/context/SponsorContenxt';
+import { deleteAdmin } from '@/api/adminApi';
 
 const ManageAdminsPage = () => {
   const { admins, setAdmins, loading } = useSponsor();
@@ -17,10 +20,8 @@ const ManageAdminsPage = () => {
   };
 
   return (
-    <div className="space-y-6 p-4 sm:p-6 lg:p-8">
-      <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-slate-900 mb-2">Manage Admins</h1>
-      </div>
+    <div>
+      <PageHeader title="Manage Admins" subtitle="View and manage all admins" icon={Users} />
       {loading ? (
         <p className="text-gray-500">Loading admins...</p>
       ) : (

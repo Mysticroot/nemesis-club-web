@@ -1,3 +1,6 @@
+import { HandHeart } from 'lucide-react';
+
+import PageHeader from '@/features/admin/dashboard/components/PageHeader';
 import SponsorDesktopView from '@/features/admin/dashboard/Sponsors/components/SponsorDesktopView';
 import SponsorMobileView from '@/features/admin/dashboard/Sponsors/components/SponsorMobileView';
 import SummaryStats from '@/features/admin/dashboard/Sponsors/components/SummaryStats';
@@ -28,11 +31,13 @@ const CurrentSponsorsPage = () => {
   }
 
   return (
-    <div className="space-y-6 p-4 sm:p-6 lg:p-8">
+    <div className="">
       {/* Header Section */}
-      <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-slate-900 mb-2">Current Sponsors</h1>
-      </div>
+      <PageHeader
+        title="Current Sponsors"
+        subtitle="Manage and review current sponsors"
+        icon={HandHeart}
+      />
 
       {/* Desktop Table View */}
       <SponsorDesktopView

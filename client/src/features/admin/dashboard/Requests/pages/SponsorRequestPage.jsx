@@ -1,3 +1,6 @@
+import { Handshake } from 'lucide-react';
+import PageHeader from '@/features/admin/dashboard/components/PageHeader';
+
 import RequestDesktopView from '@/features/admin/dashboard/Requests/components/RequestDesktopView';
 import RequestMobileView from '@/features/admin/dashboard/Requests/components/RequestMobileView';
 import EmptySponsorRequestView from '@/features/admin/dashboard/Requests/components/EmptySponsorRequestView';
@@ -18,12 +21,14 @@ const SponsorRequestPage = () => {
   }
 
   return (
-    <div className="space-y-6 p-4 sm:p-6 lg:p-8">
+    <div>
       {/* Header Section */}
-      <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-slate-900 mb-2">Sponsors Request Management</h1>
-      </div>
 
+      <PageHeader
+        title="Sponsors Requests"
+        subtitle="Manage and review sponsor requests"
+        icon={Handshake}
+      />
       {/* Desktop Table View */}
       <RequestDesktopView
         sponsorRequests={sponsorRequests}

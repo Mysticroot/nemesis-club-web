@@ -1,15 +1,15 @@
 import { useState } from 'react';
-import { AlertCircle, CheckCircle } from 'lucide-react';
+import { AlertCircle, Book, CheckCircle } from 'lucide-react';
 
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
-import HeaderSection from '@/features/admin/dashboard/components/HeaderSection';
-
+import PageHeader from '@/features/admin/dashboard/components/PageHeader';
 import ContentSection from '@/features/admin/dashboard/Create-Blog/components/ContentSection';
 import TitleSection from '@/features/admin/dashboard/Create-Blog/components/TitleSection';
 import SideBar from '@/features/admin/dashboard/Create-Blog/components/SideBar';
 import PreviewSection from '@/features/admin/dashboard/Create-Blog/components/PreviewSection';
-import { createBlog, fetchBlogs } from '@/api/blogApi';
+
+import { createBlog } from '@/api/blogApi';
 import { useBlogs } from '@/context/BlogContext';
 
 const CreateBlogPage = () => {
@@ -99,51 +99,49 @@ const CreateBlogPage = () => {
   return (
     <div className="min-h-screen bg-white text-gray-900">
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
+      <PageHeader
+        title="Create Blog"
+        subtitle="Share your thoughts and insights"
+        icon={Book}
+      />
 
-      <div className="relative">
-        <HeaderSection
-          title="Create New Blog Post"
-          subtitle="Share your thoughts and insights with your audience through engaging content"
-        />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-          {/* Status Alert */}
-          {getStatusAlert() && <div className="max-w-2xl mx-auto mb-8">{getStatusAlert()}</div>}
+      <div className="max-w-7xl">
+        {/* Status Alert */}
+        {getStatusAlert() && <div className="max-w-2xl mx-auto mb-8">{getStatusAlert()}</div>}
 
-          <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
-            {/* Main Content */}
-            <div className="xl:col-span-2 space-y-6">
-              {/* Title Section */}
-              <TitleSection
-                formData={formData}
-                errors={errors}
-                handleInputChange={handleInputChange}
-              />
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
+          {/* Main Content */}
+          <div className="xl:col-span-2 space-y-6">
+            {/* Title Section */}
+            <TitleSection
+              formData={formData}
+              errors={errors}
+              handleInputChange={handleInputChange}
+            />
 
-              {/* Content Section */}
-              <ContentSection
-                formData={formData}
-                handleInputChange={handleInputChange}
-                errors={errors}
-              />
-            </div>
-
-            {/* Sidebar */}
-            <SideBar
-              isLoading={isLoading}
-              showPreview={showPreview}
-              setShowPreview={setShowPreview}
-              handlePublish={handlePublish}
+            {/* Content Section */}
+            <ContentSection
+              formData={formData}
+              handleInputChange={handleInputChange}
+              errors={errors}
             />
           </div>
 
-          {/* Preview Section */}
-          {showPreview && formData.title && (
-            <div className="mt-12">
-              <PreviewSection formData={formData} />
-            </div>
-          )}
+          {/* Sidebar */}
+          <SideBar
+            isLoading={isLoading}
+            showPreview={showPreview}
+            setShowPreview={setShowPreview}
+            handlePublish={handlePublish}
+          />
         </div>
+
+        {/* Preview Section */}
+        {showPreview && formData.title && (
+          <div className="mt-12">
+            <PreviewSection formData={formData} />
+          </div>
+        )}
       </div>
     </div>
   );

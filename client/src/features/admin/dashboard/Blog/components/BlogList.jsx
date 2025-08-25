@@ -1,7 +1,8 @@
-import { Calendar, Edit, File, Trash } from 'lucide-react';
+import { Calendar, File, Trash } from 'lucide-react';
 
 import { Card, CardContent } from '@/components/ui/card';
-import HeaderSection from '@/features/admin/dashboard/components/HeaderSection';
+import PageHeader from '@/features/admin/dashboard/components/PageHeader';
+
 import { deleteBlog } from '@/api/blogApi';
 
 const BlogList = ({ blogs, setBlogs }) => {
@@ -16,15 +17,13 @@ const BlogList = ({ blogs, setBlogs }) => {
     }
   };
 
-  // Edit Blog
-  const handleEditPost = (id) => {
-    // Navigate to edit blog post page
-    console.log(`Editing blog with ID: ${id}`);
-  };
-
   return (
     <div className="space-y-8">
-      <HeaderSection title="Blog Management" subtitle="Create, edit and manage your blog posts" />
+      <PageHeader
+        title="Blog Management"
+        subtitle="Create, edit and manage your blog posts"
+        icon={File}
+      />
 
       {blogs.length === 0 ? (
         <div className="text-center py-12">
