@@ -19,7 +19,13 @@ const SponsorHistoryTableMobile = ({ sponsors }) => {
             <p className="text-gray-800">{sponsor.email}</p>
           </div>
           <div>
-            <span className="text-sm font-semibold text-gray-600">Opted-Out Date:</span>
+            <span className="text-sm font-semibold text-gray-600">Sponsorship Initiated:</span>
+            <p className="text-gray-700 text-sm">
+              {sponsor.approved_at ? new Date(sponsor.approved_at).toLocaleDateString() : '—'}
+            </p>
+          </div>
+          <div>
+            <span className="text-sm font-semibold text-gray-600">Sponsorship Terminated:</span>
             <p className="text-gray-700 text-sm">
               {sponsor.deleted_at ? new Date(sponsor.deleted_at).toLocaleDateString() : '—'}
             </p>
