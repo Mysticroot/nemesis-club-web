@@ -50,5 +50,5 @@ app.use('/api/history', historyRouter);
 // -------------------- SERVER START -------------------- //
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server is running ⚙️ ${process.env.DEVELOPMENT_URL}`);
+  console.log(`🚀 Server is running ⚙️  ${process.env.PORT}`);
 });

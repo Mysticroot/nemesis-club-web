@@ -61,6 +61,12 @@ const AppSidebar = () => {
       icon: Users,
       description: 'Manage admin accounts',
     },
+    {
+      path: '/admin/dashboard/terminated-sponsors',
+      label: 'Terminated Sponsors',
+      icon: Users,
+      description: 'Manage terminated sponsors',
+    },
   ];
 
   // Function to get navigation link classes
@@ -120,7 +126,7 @@ const AppSidebar = () => {
         <Separator className="mx-4" />
 
         {/* Main Navigation */}
-        <div className="flex-1 py-3">
+        <div className="flex-1 ">
           <SidebarGroup>
             <SidebarGroupLabel className="text-xs font-medium text-muted-foreground px-4 mb-2">
               NAVIGATION

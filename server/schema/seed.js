@@ -47,12 +47,21 @@ async function seed() {
 
     // 3. Insert Sponsor Requests
     await pool.query(
-      `INSERT INTO sponsor_requests (name, company_name, email, phone, message, status)
-       VALUES 
-        ('Amit Singh', 'TechMotive Inc.', 'amit@example.com', '9876543210', 'Happy to sponsor.', 'approved'),
-        ('Priya Sharma', 'MechaX Solutions', 'priya@example.com', '9123456780', 'Interested in partnership.', 'pending'),
-        ('John Carter', 'AutoDrive Ltd.', 'john@example.com', '9000000000', 'Let’s collaborate.', 'rejected')
-      ;`
+      `INSERT INTO sponsor_requests 
+    (name, company_name, email, phone, message, status, is_deleted, approved_at)
+   VALUES 
+    (
+      'Amit Singh', 'TechMotive Inc.', 'amit@example.com', '9876543210', 
+      'Happy to sponsor.', 'approved', FALSE, CURRENT_TIMESTAMP
+    ),
+    (
+      'Priya Sharma', 'MechaX Solutions', 'priya@example.com', '9123456780', 
+      'Interested in partnership.', 'pending', FALSE, NULL
+    ),
+    (
+      'John Carter', 'AutoDrive Ltd.', 'john@example.com', '9000000000', 
+      'Let’s collaborate.', 'rejected', FALSE, NULL
+    );`
     );
 
     // 4. Insert Hackathon History

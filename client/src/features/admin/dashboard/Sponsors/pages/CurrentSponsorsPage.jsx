@@ -6,7 +6,7 @@ import SponsorMobileView from '@/features/admin/dashboard/Sponsors/components/Sp
 import SummaryStats from '@/features/admin/dashboard/Sponsors/components/SummaryStats';
 import EmptySponsorView from '@/features/admin/dashboard/Sponsors/components/EmptySponsorView';
 
-import { useSponsor } from '@/context/SponsorContenxt';
+import { useSponsor } from '@/context/SponsorContext';
 import { useSponsorDelete } from '@/hooks/useSponsorDelete';
 
 const CurrentSponsorsPage = () => {

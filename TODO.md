@@ -38,10 +38,6 @@
 
 ## 🔐 Admin TODO (Assigned: US)
 
-### 🔐 Auth
-
-- [ ] Add hiding logic for admin login/register routes (if already logged in)
-
 ### 📱 Admin UI
 
 - [X] Fix mobile view responsiveness for admin management pages
@@ -51,3 +47,7 @@
 ### 🧹 Data Handling
 
 - [ ] On deleting a sponsor, ensure related data (e.g. requests) is properly handled without direct DB removal (prefer soft delete or cascade delete)
+
+### 🔐 Auth
+
+- [ ] Add hiding logic for admin login/register routes (if already logged in)

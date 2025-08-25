@@ -27,9 +27,17 @@ CREATE TABLE sponsor_requests (
   email TEXT NOT NULL,
   phone TEXT,
   message TEXT,
-  status TEXT DEFAULT 'pending',
+
+  status TEXT NOT NULL DEFAULT 'pending' 
+    CHECK (status IN ('pending', 'approved', 'rejected')),
+
+  is_deleted BOOLEAN NOT NULL DEFAULT FALSE,
+  deleted_at TIMESTAMP,
+  approved_at TIMESTAMP,
+
   submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
 
 CREATE TABLE hackathon_history (
   id SERIAL PRIMARY KEY,

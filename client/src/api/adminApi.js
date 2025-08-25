@@ -3,7 +3,7 @@ import axios from '@/lib/axiosInstance';
 export async function fetchAllAdmins() {
   try {
     const { data: resp } = await axios('/admin');
-    console.log(resp.data);
+    // console.log(resp.data);
     return resp.data;
   } catch (error) {
     throw error;

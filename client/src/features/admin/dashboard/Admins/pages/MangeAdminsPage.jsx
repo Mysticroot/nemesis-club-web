@@ -4,7 +4,7 @@ import PageHeader from '@/features/admin/dashboard/components/PageHeader';
 import AdminTable from '@/features/admin/dashboard/Admins/components/AdminTable';
 import AdminMobileTable from '@/features/admin/dashboard/Admins/components/MobileAdminTable';
 
-import { useSponsor } from '@/context/SponsorContenxt';
+import { useSponsor } from '@/context/SponsorContext';
 import { deleteAdmin } from '@/api/adminApi';
 
 const ManageAdminsPage = () => {

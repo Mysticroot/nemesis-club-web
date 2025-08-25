@@ -56,3 +56,15 @@ export async function deleteSponsorRequest(id) {
     throw error;
   }
 }
+
+// Sponsor History
+export async function fetchSponsorHistory() {
+  try {
+    const { data: resp } = await axios.get('/sponsors/history');
+    const result = resp.data;
+    return result;
+  } catch (error) {
+    console.error('Error fetching sponsor history:', error);
+    throw error;
+  }
+}

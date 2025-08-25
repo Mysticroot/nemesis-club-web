@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { deleteSponsorRequest } from '@/api/sponsorApi';
-import { useSponsor } from '@/context/SponsorContenxt';
+import { useSponsor } from '@/context/SponsorContext';
 
 export const useSponsorDelete = () => {
   const { reloadApproved } = useSponsor();

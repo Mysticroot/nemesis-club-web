@@ -1,5 +1,5 @@
 import { updateSponsorStatus } from '@/api/sponsorApi';
-import { useSponsor } from '@/context/SponsorContenxt';
+import { useSponsor } from '@/context/SponsorContext';
 
 export const useSponsorAction = () => {
   const { setSponsorRequests, reloadApproved } = useSponsor();

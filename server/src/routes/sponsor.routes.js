@@ -5,6 +5,7 @@ import {
   deleteApprovedSponsor,
   fetchAllSponsorRequests,
   fetchApprovedSponsors,
+  previousSponsors,
   updateSponsorRequestStatus,
 } from '../controllers/sponsor.controller.js';
 
@@ -28,6 +29,8 @@ router.get('/requests/approved', verifyToken, fetchApprovedSponsors);
 router.put('/requests/:id/status', verifyToken, updateSponsorRequestStatus);
 
 router.delete('/requests/:id', verifyToken, deleteApprovedSponsor); // DELETE /api/sponsors/requests/:id
+
+router.get('/history', verifyToken, previousSponsors); // GET /api/sponsors/history
 
 export { router as sponsorRouter };
 /**

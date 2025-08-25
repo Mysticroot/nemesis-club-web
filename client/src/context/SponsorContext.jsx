@@ -1,5 +1,10 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { fetchSponsorRequests, fetchApprovedSponsors, updateSponsorStatus } from '@/api/sponsorApi';
+import {
+  fetchSponsorRequests,
+  fetchApprovedSponsors,
+  updateSponsorStatus,
+  fetchSponsorHistory,
+} from '@/api/sponsorApi';
 import { fetchAllAdmins } from '@/api/adminApi';
 import { useAuth } from '@/context/AuthContext';
 
@@ -10,6 +15,7 @@ export function SponsorProvider({ children }) {
 
   const [sponsorRequests, setSponsorRequests] = useState([]);
   const [approvedSponsors, setApprovedSponsors] = useState([]);
+  const [sponsorHistory, setSponsorHistory] = useState([]);
   const [admins, setAdmins] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -34,16 +40,6 @@ export function SponsorProvider({ children }) {
     }
   };
 
-  const changeSponsorStatus = async (id, status) => {
-    try {
-      await updateSponsorStatus(id, status);
-      await loadSponsorRequests(); // Refresh state
-      await loadApprovedSponsors();
-    } catch (err) {
-      console.error('Failed to update sponsor status');
-    }
-  };
-
   const loadAdmins = async () => {
     try {
       setLoading(true);
@@ -56,11 +52,35 @@ export function SponsorProvider({ children }) {
     }
   };
 
+  const loadSponsorHistory = async () => {
+    try {
+      setLoading(true);
+      const data = await fetchSponsorHistory();
+      setSponsorHistory(data);
+    } catch (err) {
+      console.error('Failed to fetch sponsor history');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const changeSponsorStatus = async (id, status) => {
+    try {
+      await updateSponsorStatus(id, status);
+      await loadSponsorRequests(); // Refresh state
+      await loadApprovedSponsors();
+      await loadSponsorHistory();
+    } catch (err) {
+      console.error('Failed to update sponsor status');
+    }
+  };
+
   useEffect(() => {
     if (!authLoading && isAuthenticated) {
       loadSponsorRequests();
       loadApprovedSponsors();
       loadAdmins();
+      loadSponsorHistory();
     }
   }, [authLoading, isAuthenticated]);
 
@@ -76,6 +96,7 @@ export function SponsorProvider({ children }) {
         reloadRequests: loadSponsorRequests,
         reloadApproved: loadApprovedSponsors,
         updateStatus: changeSponsorStatus,
+        sponsorHistory,
       }}
     >
       {children}

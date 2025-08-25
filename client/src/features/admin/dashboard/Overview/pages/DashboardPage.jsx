@@ -4,7 +4,7 @@ import OverviewCards from '@/features/admin/dashboard/Overview/components/Overvi
 import QuickActions from '@/features/admin/dashboard/Overview/components/QuickActions';
 
 import { useBlogs } from '@/context/BlogContext';
-import { useSponsor } from '@/context/SponsorContenxt';
+import { useSponsor } from '@/context/SponsorContext';
 import { LayoutDashboard } from 'lucide-react';
 
 const DashboardPage = () => {

@@ -6,7 +6,7 @@ import RequestMobileView from '@/features/admin/dashboard/Requests/components/Re
 import EmptySponsorRequestView from '@/features/admin/dashboard/Requests/components/EmptySponsorRequestView';
 import SummaryStats from '@/features/admin/dashboard/Requests/components/SummaryStats';
 
-import { useSponsor } from '@/context/SponsorContenxt';
+import { useSponsor } from '@/context/SponsorContext';
 import { useSponsorAction } from '@/hooks/useSponsorAction';
 
 const SponsorRequestPage = () => {
