@@ -5,7 +5,7 @@ import SponserSection from '@/features/general/home/components/SponsorSection';
 
 const HomePage = () => {
   return (
-    <div className="bg-[#0E0E0E] text-white font-sans">
+    <div className="bg-[#0E0E0E] text-white font-sans overflow-x-hidden">
       {/* Hero Section */}
       <HeroSection />
 

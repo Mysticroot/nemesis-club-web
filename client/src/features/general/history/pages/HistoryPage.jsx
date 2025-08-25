@@ -94,7 +94,7 @@ export default function History() {
             {/* Image Section */}
             <div className="w-full md:w-[35%] relative">
               <img
-                src={item.image}
+                src="/his1.jpg"
                 alt={item.title}
                 className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
               />

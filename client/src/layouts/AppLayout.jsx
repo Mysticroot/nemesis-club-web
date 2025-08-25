@@ -15,6 +15,7 @@ import Sponsor from '@/features/general/sponsor/Sponsor';
 import History from '@/features/general/history/pages/HistoryPage';
 import Contact from '@/features/general/contact/pages/ContactPage';
 import BlogDetails from '@/features/general/blog/pages/DetailBlogPage';
+import SponsorForm from '@/features/general/sponsor/SponsorForm';
 
 // Admin Pages
 import LoginPage from '@/features/admin/auth/pages/LoginPage';
@@ -52,6 +53,7 @@ const AppLayout = () => {
         <Route path="/blogs/:id" element={<BlogDetails />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/SponsorForm" element={<SponsorForm />} />
         <Route path="/achievements" element={<History />} />
         <Route path="/sponsor" element={<Sponsor />} />
         <Route path="/admin/login" element={<LoginPage />} />
