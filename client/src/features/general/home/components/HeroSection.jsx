@@ -55,7 +55,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-screen w-screen max-w-full overflow-hidden">
       {/* Background images (no overlay) */}
       <div className="absolute inset-0">
         <AnimatePresence initial={false} custom={direction}>
@@ -68,7 +68,11 @@ export default function HeroSection() {
             animate="center"
             exit="exit"
           >
-            <img src={images[currentImage]} alt="slide" className="w-full h-full object-cover" />
+            <img
+              src={images[currentImage]}
+              alt="slide"
+              className="w-full h-full object-cover max-w-full"
+            />
           </motion.div>
         </AnimatePresence>
       </div>

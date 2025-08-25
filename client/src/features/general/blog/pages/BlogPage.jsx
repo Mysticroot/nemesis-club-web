@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useBlogs } from '@/context/BlogContext';
+import his1 from '/his1.jpg';
+
 
 export default function Blogs() {
   const { blogs } = useBlogs();
@@ -46,7 +48,7 @@ export default function Blogs() {
             >
               <div className="relative">
                 <img
-                  src={blog.image}
+                  src={his1}
                   alt={blog.title}
                   className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
                 />
