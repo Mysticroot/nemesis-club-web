@@ -14,12 +14,19 @@ const PORT = process.env.PORT || 8080;
 
 // -------------------- MIDDLEWARE -------------------- //
 
+// Tell Express to trust the proxy (Render's load balancer)
+app.set('trust proxy', 1);
+
 // Parse incoming JSON and URL-encoded data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Allow CORS
+const whiteList = [process.env.CLIENT_URL, process.env.DEVELOPMENT_URL];
+
 app.use(
   cors({
-    origin: [process.env.CLIENT_URL, process.env.DEVELOPMENT_URL], // Allow requests from the client URL
+    origin: whiteList, // Allow requests from the client URL
     credentials: true, // Allow cookies to be sent with requests
   })
 );
@@ -43,5 +50,5 @@ app.use('/api/history', historyRouter);
 // -------------------- SERVER START -------------------- //
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server is running at http://localhost:${PORT}`);
+  console.log(`🚀 Server is running ⚙️ ${process.env.DEVELOPMENT_URL}`);
 });
