@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useBlogs } from '@/context/BlogContext';
-
+import his1 from '/his1.jpg';
 import race22 from '/race22.jpg';
 import whatwedo from '/whatwedo.jpg';
 
@@ -153,7 +153,7 @@ export default function BlogSection() {
                 transition={{ type: 'spring', stiffness: 200 }}
                 className="bg-[#111111] rounded-2xl shadow-lg overflow-hidden border border-[#1A73E8]/30"
               >
-                <img src={blog.cover_image} alt={blog.title} className="h-48 w-full object-cover" />
+                <img src={his1} alt={blog.title} className="h-48 w-full object-cover" />
                 <div className="p-6">
                   <h4
                     className="text-lg font-bold mb-3 text-transparent bg-clip-text 

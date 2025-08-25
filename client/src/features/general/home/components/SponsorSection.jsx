@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import spon from '/rb.png';
 
 const sponsors = [
   { name: 'Pirelli', logo: '/images/sponsors/pirelli.png' },
@@ -59,12 +60,12 @@ export default function SponsorsSection() {
                 key={idx}
                 to="/sponsors"
                 aria-label={`View details about ${sponsor.name}`}
-                className="flex items-center justify-center flex-shrink-0 w-40 h-24 bg-white/5 backdrop-blur-md rounded-2xl hover:bg-white/10 transition-all"
+                className="flex items-center justify-center flex-shrink-0 w-48 h-28 bg-white/5 backdrop-blur-md rounded-2xl hover:bg-white/10 transition-all"
               >
                 <img
-                  src={sponsor.logo}
+                  src={spon}
                   alt={sponsor.name}
-                  className="max-h-16 object-contain filter grayscale hover:grayscale-0 transition duration-300"
+                  className="max-h-20 object-contain transition duration-300"
                 />
               </Link>
             ))}

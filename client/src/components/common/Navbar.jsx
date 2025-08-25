@@ -32,7 +32,7 @@ const Navbar = () => {
       setLastScrollY(currentScrollY);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
@@ -52,7 +52,7 @@ const Navbar = () => {
   const isHomePage = location.pathname === '/' || location.pathname === '/home';
   const navbarBg = isHomePage
     ? isAtTop
-      ? 'bg-transparent'
+      ? 'bg-[#0A0A0A]/70 backdrop-blur-md' // ✅ fix: avoid fully transparent on hero (mobile bug)
       : 'bg-[#0A0A0A] shadow-md'
     : 'bg-[#0A0A0A] shadow-md';
 

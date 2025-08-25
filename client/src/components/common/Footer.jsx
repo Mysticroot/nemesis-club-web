@@ -90,7 +90,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/history" className="hover:text-white transition">
+                <Link to="/Achievements" className="hover:text-white transition">
                   Achievements
                 </Link>
               </li>
@@ -100,7 +100,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/become-sponsor" className="hover:text-white transition">
+                <Link to="/SponsorForm" className="hover:text-white transition">
                   Become a Sponsor
                 </Link>
               </li>
