@@ -68,13 +68,13 @@ const BlogList = ({ blogs, setBlogs }) => {
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <button
+                      {/* <button
                         onClick={() => handleEditPost(post.id)}
                         className="p-2 text-muted-foreground hover:text-primary hover:bg-primary/10 hover:cursor-pointer rounded-lg transition-all duration-200"
                         aria-label={`Edit ${post.title}`}
                       >
                         <Edit color="blue" width={20} />
-                      </button>
+                      </button> */}
                       <button
                         onClick={() => handleDelete(post.id)}
                         className="p-2 text-muted-foreground hover:text-destructive hover:bg-destructive/10 hover:cursor-pointer rounded-lg transition-all duration-200"

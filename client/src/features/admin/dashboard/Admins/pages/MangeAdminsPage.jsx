@@ -1,5 +1,7 @@
 import { deleteAdmin } from '@/api/adminApi';
 import AdminTable from '@/features/admin/dashboard/Admins/components/AdminTable';
+import AdminMobileTable from '@/features/admin/dashboard/Admins/components/MobileAdminTable';
+
 import { useSponsor } from '@/context/SponsorContenxt';
 
 const ManageAdminsPage = () => {
@@ -22,7 +24,14 @@ const ManageAdminsPage = () => {
       {loading ? (
         <p className="text-gray-500">Loading admins...</p>
       ) : (
-        <AdminTable admins={admins} onDelete={handleDeleteAdmin} />
+        <>
+          <div className="hidden lg:block">
+            <AdminTable admins={admins} onDelete={handleDeleteAdmin} />
+          </div>
+          <div className="block lg:hidden">
+            <AdminMobileTable admins={admins} onDelete={handleDeleteAdmin} />
+          </div>
+        </>
       )}
     </div>
   );

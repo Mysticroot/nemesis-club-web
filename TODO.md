@@ -45,8 +45,8 @@
 ### 📱 Admin UI
 
 - [ ] Fix mobile view responsiveness for admin management pages
-- [ ] Make heading styles consistent across all admin pages
-- [ ] Update dashboard overview with correct quick links
+- [X] Make heading styles consistent across all admin pages
+- [X] Update dashboard overview with correct quick links
 
 ### 🧹 Data Handling
 
