@@ -97,6 +97,7 @@ export function SponsorProvider({ children }) {
         reloadApproved: loadApprovedSponsors,
         updateStatus: changeSponsorStatus,
         sponsorHistory,
+        reloadSponsorHistory: loadSponsorHistory,
       }}
     >
       {children}

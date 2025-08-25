@@ -1,6 +1,7 @@
 import { formatDate } from '@/lib/formatDate';
 
 const SponsorHistoryTable = ({ sponsors }) => {
+  console.log(sponsors);
   return (
     <div className="lg:block">
       <div className="border border-gray-200 shadow-lg bg-white overflow-hidden rounded-lg">

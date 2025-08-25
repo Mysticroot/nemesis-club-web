@@ -3,7 +3,7 @@ import { deleteSponsorRequest } from '@/api/sponsorApi';
 import { useSponsor } from '@/context/SponsorContext';
 
 export const useSponsorDelete = () => {
-  const { reloadApproved } = useSponsor();
+  const { reloadApproved, reloadSponsorHistory } = useSponsor();
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [selectedSponsor, setSelectedSponsor] = useState(null);
 
@@ -17,6 +17,7 @@ export const useSponsorDelete = () => {
 
     await deleteSponsorRequest(selectedSponsor.id);
     await reloadApproved();
+    await reloadSponsorHistory();
     setDeleteDialogOpen(false);
     setSelectedSponsor(null);
   };

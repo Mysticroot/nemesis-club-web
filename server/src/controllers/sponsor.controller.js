@@ -40,10 +40,25 @@ export const updateSponsorRequestStatus = async (req, res) => {
   }
 
   try {
-    const result = await pool.query(
-      `UPDATE sponsor_requests SET status = $1 WHERE id = $2 RETURNING *`,
-      [status, id]
-    );
+    let query, values;
+
+    if (status === 'approved') {
+      query = `
+        UPDATE sponsor_requests
+        SET status = $1, approved_at = CURRENT_TIMESTAMP
+        WHERE id = $2
+        RETURNING *`;
+      values = [status, id];
+    } else {
+      query = `
+        UPDATE sponsor_requests
+        SET status = $1, approved_at = NULL
+        WHERE id = $2
+        RETURNING *`;
+      values = [status, id];
+    }
+
+    const result = await pool.query(query, values);
 
     if (result.rowCount === 0) {
       return errorResponse(res, 'Request not found', 404);
@@ -92,7 +107,6 @@ export const deleteApprovedSponsor = async (req, res) => {
     return errorResponse(res, 'Failed to opt-out sponsor', 500, err.message);
   }
 };
-
 
 // Fetch deleted (opted-out) sponsors for history
 export const previousSponsors = async (req, res) => {
