@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || 'http://localhost:5173', // Allow requests from the client URL
+    origin: [process.env.CLIENT_URL, process.env.DEVELOPMENT_URL], // Allow requests from the client URL
     credentials: true, // Allow cookies to be sent with requests
   })
 );
