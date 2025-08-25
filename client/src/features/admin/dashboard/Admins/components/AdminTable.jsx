@@ -23,7 +23,7 @@ const AdminTable = ({ admins, onDelete }) => {
   };
 
   return (
-    <div className="hidden lg:block">
+    <div className="lg:block">
       <div className="border border-gray-200 shadow-lg bg-white overflow-hidden rounded-lg">
         <div className="overflow-x-auto">
           <table className="w-full">

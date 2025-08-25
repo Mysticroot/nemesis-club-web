@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 // Create instance
-const devUrl = 'http://localhost:8080/api';
-const prodUrl = 'https://nemesis-club-web.onrender.com/api';
+const backendUrl = import.meta.env.VITE_API_URL;
+
 const axiosInstance = axios.create({
-  baseURL: prodUrl, // ✅ Your backend base URL
+  baseURL: backendUrl, // ✅ Your backend base URL
   headers: {
     'Content-Type': 'application/json',
   },
